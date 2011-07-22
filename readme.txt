@@ -3,7 +3,7 @@ Contributors: MarijnRongen
 Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Twitter, Tweet, StumbleUpon, Stumble, Tumblr, Digg, Reddit, MySpace, Hyves, recommend, social, sharing
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 
 This plugin enables sharing of your content via popular social networks and can convert Twitter names and hashtags to links. Easy & configurable.
@@ -49,7 +49,14 @@ Upload the Social Sharing Toolkit plugin to your blog, activate it and use the S
 3. Several wide buttons
 4. Several high buttons
 
+== Upgrade Notice ==
+
+Please update to version 1.0.1 to prevent an unexpected printing of the page title.
+
 == Changelog ==
+
+= 1.0.1 =
+* Fixed unexpected printing of the page title 
 
 = 1.0.0 =
 * First version

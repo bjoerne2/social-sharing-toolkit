@@ -3,7 +3,7 @@
 Plugin Name: Social Sharing Toolkit
 Plugin URI: http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 1.0.0
+Version: 1.0.1
 Author: Marijn Rongen
 Author URI: http://www.marijnrongen.com
 */
@@ -205,7 +205,7 @@ class MR_Social_Sharing_Toolkit {
 	}
 	
 	function create_bookmarks() {
-		$title = the_title();
+		$title = the_title('','',false);
 		$url = get_permalink();
 		$class = 'mr_social_sharing_'.$this->options['layout'];
 		$bookmarks = '<ul class="mr_social_sharing">
