@@ -1,0 +1,41 @@
+ul.mr_social_sharing {
+	list-style-type: none;
+	float: left;
+	clear: both;
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+li.mr_social_sharing_none {
+	float: left;
+	width: auto;
+	height: 24px;
+	margin: 0;
+	padding: 4px;
+}
+
+li.mr_social_sharing_horizontal {
+	float: left;
+	width: 150px;	
+	height: 24px;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+li.mr_social_sharing_vertical {
+	float: left;
+	width: 64px;
+	height: 70px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+li.mr_social_sharing_none img, li.mr_social_sharing_horizontal img, li.mr_social_sharing_vertical img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
