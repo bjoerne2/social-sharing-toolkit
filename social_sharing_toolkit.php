@@ -3,7 +3,7 @@
 Plugin Name: Social Sharing Toolkit
 Plugin URI: http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 1.0.1
+Version: 1.2.0
 Author: Marijn Rongen
 Author URI: http://www.marijnrongen.com
 */
@@ -209,7 +209,7 @@ class MR_Social_Sharing_Toolkit {
 		$url = get_permalink();
 		$class = 'mr_social_sharing_'.$this->options['layout'];
 		$bookmarks = '<ul class="mr_social_sharing">
-						<!-- Social Sharing Toolkit v1.0.0 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->';
+						<!-- Social Sharing Toolkit v1.2.0 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->';
 		if ($this->options['like'] == 1) {
 			$bookmarks .= '
 						<li class="'.$class.'">
@@ -442,6 +442,247 @@ class MR_Social_Sharing_Toolkit {
 		return $content;
 	}
 }
+class MR_Social_Sharing_Toolkit_Widget extends WP_Widget {
+	function MR_Social_Sharing_Toolkit_Widget() {
+		$widget_ops = array( 'classname' => 'MR_Social_Sharing_Toolkit_Widget', 'description' => '' );
+		$control_ops = array( 'id_base' => 'mr-social-sharing-toolkit-widget' );
+		$this->WP_Widget( 'mr-social-sharing-toolkit-widget', 'Social Sharing Toolkit Widget', $widget_ops, $control_ops );
+	}
+
+	function widget ( $args, $instance) {
+		extract( $args );
+		echo $before_widget;
+		$MR_Social_Sharing_Toolkit = new MR_Social_Sharing_Toolkit();
+		$options = $MR_Social_Sharing_Toolkit->get_options();
+		$options['widget_layout'] = empty($instance['widget_layout']) ? 'none' : $instance['widget_layout'];
+		wp_enqueue_style('mr_social_sharing', plugins_url('/style.css', __FILE__));
+		if ($this->options['plus'] == 1) {
+			wp_enqueue_script('GooglePlus', 'https://apis.google.com/js/plusone.js');
+		}
+		if ($this->options['tumblr'] == 1) {
+			wp_enqueue_script('Tumblr', 'http://platform.tumblr.com/v1/share.js', array(), false, true);
+		}
+		if ($this->options['digg'] == 1) {
+			wp_enqueue_script('digg', 'http://widgets.digg.com/buttons.js');
+		}
+		$url = 'http://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		$class = 'mr_social_sharing_widget_'.$options['widget_layout'];
+		$bookmarks = '<ul class="mr_social_sharing_widget">
+						<!-- Social Sharing Toolkit v1.2.0 widget | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->';
+		if ($options['like'] == 1) {
+			$bookmarks .= '
+						<li class="'.$class.'">
+							<iframe src="http://www.facebook.com/plugins/like.php?href='.$url.'&amp;layout=';
+			switch ($options['widget_layout']) {
+				case 'horizontal':
+					$bookmarks .= 'button_count';
+					$width = '90px';
+					$height = '20px';
+					break;
+				case 'vertical':
+					$bookmarks .= 'box_count';
+					$width = '55px';
+					$height = '65px';
+					break;
+				default:
+					$bookmarks .= 'standard';
+					$width = '225%';
+					$height = '35px';
+					break;
+			}
+			$bookmarks .= '&amp;show_faces=false&amp;width='.$width.'&amp;height='.$height.'" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:'.$width.'; height:'.$height.';" allowTransparency="true"></iframe>
+						</li>';
+		}
+		if ($options['tweet'] == 1) {
+			$bookmarks .= '
+						<li class="'.$class.'">
+							<a href="http://twitter.com/share" class="twitter-share-button" data-url="'.$url.'" data-count="';
+			switch ($options['widget_layout']) {
+				case 'horizontal':
+					$bookmarks .= 'horizontal';
+					break;
+				case 'vertical':
+					$bookmarks .= 'vertical';
+					break;
+				default:
+					$bookmarks .= 'none';
+					break;
+			}
+			$bookmarks .= '">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+						</li>';
+		}
+		if ($options['plus'] == 1) {
+			$bookmarks .= '
+						<li class="'.$class.'">
+							<g:plusone';
+			switch ($options['widget_layout']) {
+				case 'horizontal':
+					$bookmarks .= ' size="medium"';
+					break;
+				case 'vertical':
+					$bookmarks .= ' size="tall"';
+					break;
+				default:
+					$bookmarks .= ' size="medium" count="false"';
+					break;
+			}
+			$bookmarks .= ' href="'.$url.'"></g:plusone>
+						</li>';
+		}
+		if ($options['share'] == 1) {
+			$bookmarks .= '
+						<li class="'.$class.'">
+							<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script><script type="IN/Share" data-url="'.$url.'"';
+			switch ($options['widget_layout']) {
+				case 'horizontal':
+					$bookmarks .= ' data-counter="right"';
+					break;
+				case 'vertical':
+					$bookmarks .= ' data-counter="top"';
+					break;
+				default:
+					$bookmarks .= '';
+					break;
+			}
+			$bookmarks .= '></script>
+						</li>';	
+		}
+		if ($options['tumblr'] == 1) {
+			$bookmarks .= '
+						<li class="'.$class.'">
+							<a href="http://www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; ';
+			switch ($options['widget_layout']) {
+				case 'horizontal':
+					$bookmarks .= 'width:81px; height:20px; background:url(\'http://platform.tumblr.com/v1/share_1.png\')';
+					break;
+				case 'vertical':
+					$bookmarks .= 'width:61px; height:20px; background:url(\'http://platform.tumblr.com/v1/share_2.png\')';
+					break;
+				default:
+					$bookmarks .= 'width:61px; height:20px; background:url(\'http://platform.tumblr.com/v1/share_2.png\')';
+					break;
+			}
+			$bookmarks .= ' top left no-repeat transparent;">Share on Tumblr</a>
+						</li>';
+		}
+		if ($options['stumble'] == 1) {
+			$bookmarks .= '
+						<li class="'.$class.'">
+							<script src="http://www.stumbleupon.com/hostedbadge.php?s=';
+			switch ($options['widget_layout']) {
+				case 'horizontal':
+					$bookmarks .= '1';
+					break;
+				case 'vertical':
+					$bookmarks .= '5';
+					break;
+				default:
+					$bookmarks .= '4';
+					break;
+			}
+			$bookmarks .= '&r='.$url.'"></script>
+						</li>';	
+		}
+		if ($options['digg'] == 1) {
+			$bookmarks .= '
+						<li class="'.$class.'">
+							<a class="DiggThisButton ';
+			switch ($options['widget_layout']) {
+				case 'horizontal':
+					$bookmarks .= 'DiggCompact';
+					break;
+				case 'vertical':
+					$bookmarks .= 'DiggMedium';
+					break;
+				default:
+					$bookmarks .= 'DiggIcon';
+					break;
+			}			
+			$bookmarks .= '" href="http://digg.com/submit?url='.$url.'"></a>
+						</li>';
+		}
+		if ($options['reddit'] == 1) {
+			$bookmarks .= '
+						<li class="'.$class.'">';
+			switch ($options['widget_layout']) {
+				case 'horizontal':
+					$bookmarks .= '
+							<script type="text/javascript">
+							  reddit_url = "'.$url.'";
+							</script>
+							<script type="text/javascript" src="http://www.reddit.com/static/button/button1.js"></script>';
+					break;
+				case 'vertical':
+					$bookmarks .= '
+							<script type="text/javascript">
+							  reddit_url = "'.$url.'";
+							</script>
+							<script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script>';
+					break;
+				default:
+					$bookmarks .= '
+							<a href="http://www.reddit.com/submit" onclick="window.location = \'http://www.reddit.com/submit?url='.$url.'\'; return false"><img src="http://www.reddit.com/static/spreddit1.gif" alt="submit to reddit" border="0" /></a>';
+					break;
+			}	
+			$bookmarks .= '
+						</li>';
+		}
+		if ($options['myspace'] == 1) {
+			$bookmarks .= '
+						<li class="'.$class.'">
+							<a href="javascript:void(window.open(\'http://www.myspace.com/Modules/PostTo/Pages/?u='.$url.'\',\'ptm\',\'height=450,width=550\').focus())">
+    							<img src="http://cms.myspacecdn.com/cms//ShareOnMySpace/Myspace_btn_';
+    		switch ($options['widget_layout']) {
+    			case 'horizontal':
+    				$bookmarks .= 'ShareOnMyspace';
+    				break;
+    			default:
+    				$bookmarks .= 'Share';
+    				break;	
+    		}
+    		$bookmarks .= '.png" border="0" alt="Share on Myspace" />
+							</a>
+						</li>';
+		}
+		if ($options['hyves'] == 1) {
+			$bookmarks .= '
+						<li class="'.$class.'">
+							<iframe src="http://www.hyves.nl/respect/button?url='.$url.'" style="border: medium none; overflow:hidden; width:150px; height:21px;" scrolling="no" frameborder="0" allowTransparency="true" ></iframe>
+						</li>
+					</ul>';
+		}
+		echo $bookmarks;
+		echo $after_widget;
+	}
+	
+	function update($new_instance, $old_instance) {
+		$instance = $old_instance;
+		$instance['widget_layout'] = $new_instance['widget_layout'];
+		return $instance;
+	}
+	
+	function form($instance) {
+		$instance = wp_parse_args((array) $instance, array( 'widget_layout' => 'none'));
+		echo '			
+		<p>
+			<label for="'.$this->get_field_id( 'widget_layout' ).'">Widget layout:</label>
+			<select id="'.$this->get_field_id( 'widget_layout' ).'" name="'.$this->get_field_name( 'widget_layout' ).'" class="widefat" style="width:100%;">
+				<option ';
+		if ( "none" == $instance['widget_layout'] ) echo 'selected="selected" ';
+		echo 'value="none">Small buttons without counters</option>
+				<option ';
+		if ( "horizontal" == $instance['widget_layout'] ) echo 'selected="selected" ';
+		echo 'value="horizontal">Wider buttons with counters</option>
+				<option ';
+		if ( "vertical" == $instance['widget_layout'] ) echo 'selected="selected" ';
+		echo 'value="vertical">Higher buttons with counters</option>
+			</select>
+		</p>
+		<p>
+			Further configuration is done via the plugin admin screen under Settings &rarr; Social Sharing Toolkit.
+		</p>';
+	}	
+}
 $MR_Social_Sharing_Toolkit = new MR_Social_Sharing_Toolkit();
 if ($MR_Social_Sharing_Toolkit->should_linkify_content()) {
 	add_filter('the_content', array($MR_Social_Sharing_Toolkit, 'linkify'));
@@ -453,5 +694,7 @@ if ($MR_Social_Sharing_Toolkit->should_share_content()) {
 	add_filter( 'the_content', array($MR_Social_Sharing_Toolkit, 'share'));
 }
 add_shortcode('social_share', array($MR_Social_Sharing_Toolkit, 'share_shortcode'));
+/* Register plugin */
+add_action('widgets_init', create_function('', 'return register_widget("MR_Social_Sharing_Toolkit_Widget");'));
 /* Register plugin admin page */
 add_action('admin_menu', array($MR_Social_Sharing_Toolkit, 'plugin_menu'));
