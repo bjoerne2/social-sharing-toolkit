@@ -6,7 +6,7 @@ ul.mr_social_sharing, ul.mr_social_sharing_widget {
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	border-width: 0px;
+	border: 0;
 }
 
 li.mr_social_sharing_none, li.mr_social_sharing_widget_none {
@@ -15,7 +15,7 @@ li.mr_social_sharing_none, li.mr_social_sharing_widget_none {
 	height: 24px;
 	margin: 0;
 	padding: 4px;
-	border-width: 0px;
+	border: 0;
 }
 
 li.mr_social_sharing_horizontal, li.mr_social_sharing_widget_horizontal {
@@ -25,7 +25,7 @@ li.mr_social_sharing_horizontal, li.mr_social_sharing_widget_horizontal {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	border-width: 0px;
+	border: 0;
 }
 
 li.mr_social_sharing_vertical, li.mr_social_sharing_widget_vertical {
@@ -35,11 +35,16 @@ li.mr_social_sharing_vertical, li.mr_social_sharing_widget_vertical {
 	margin: 0;
 	padding: 0;
 	text-align: center;
-	border-width: 0px;
+	border: 0;
 }
 
 li.mr_social_sharing_none img, li.mr_social_sharing_horizontal img, li.mr_social_sharing_vertical img, li.mr_social_sharing_widget_none img, li.mr_social_sharing_widget_horizontal img, li.mr_social_sharing_widget_vertical img {
 	margin: 0;
 	padding: 0;
-	border-width: 0px;
+	border: 0;
+}
+
+li.mr_social_sharing_none a, li.mr_social_sharing_horizontal a, li.mr_social_sharing_vertical a, li.mr_social_sharing_widget_none a, li.mr_social_sharing_widget_horizontal a, li.mr_social_sharing_widget_vertical a {
+	background: none;
+	border: 0;
 }
