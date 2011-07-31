@@ -1,0 +1,50 @@
+ul.mr_social_sharing, ul.mr_social_sharing_widget {
+	list-style-type: none;
+	float: left;
+	clear: both;
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+li.mr_social_sharing_none, li.mr_social_sharing_widget_none {
+	float: left;
+	width: auto;
+	height: 24px;
+	margin: 0;
+	padding: 4px;
+	border: 0;
+}
+
+li.mr_social_sharing_horizontal, li.mr_social_sharing_widget_horizontal {
+	float: left;
+	width: 150px;	
+	height: 24px;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+	border: 0;
+}
+
+li.mr_social_sharing_vertical, li.mr_social_sharing_widget_vertical {
+	float: left;
+	width: 64px;
+	height: 70px;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	border: 0;
+}
+
+li.mr_social_sharing_none img, li.mr_social_sharing_horizontal img, li.mr_social_sharing_vertical img, li.mr_social_sharing_widget_none img, li.mr_social_sharing_widget_horizontal img, li.mr_social_sharing_widget_vertical img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+li.mr_social_sharing_none a, li.mr_social_sharing_horizontal a, li.mr_social_sharing_vertical a, li.mr_social_sharing_widget_none a, li.mr_social_sharing_widget_horizontal a, li.mr_social_sharing_widget_vertical a {
+	background: none;
+	border: 0;
+}
