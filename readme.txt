@@ -44,10 +44,10 @@ The plugin uses a list to position the buttons. You can easily change the css to
 = Using it somewhere else =
 
 If you want to display the buttons outside of your content you can use the following code where you want the buttons to appear:
-<?php
+`<?php
 	$social_sharing_toolkit = new MR_Social_Sharing_Toolkit();
 	echo $social_sharing_toolkit->create_bookmarks();
-?>
+?>`
 
 = Automatic Twitter links =
 
