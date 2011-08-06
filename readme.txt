@@ -1,10 +1,10 @@
 === Social Sharing Toolkit ===
 Contributors: MarijnRongen
 Donate link: http://www.marijnrongen.com/wordpress-plugins/
-Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Twitter, Tweet, StumbleUpon, Stumble, Tumblr, Digg, Reddit, MySpace, Hyves, recommend, social, sharing, widget, page, post
+Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Twitter, Tweet, StumbleUpon, Stumble, Tumblr, Digg, Reddit, MySpace, Hyves, recommend, social, sharing, widget, shortcode, page, post
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 
 This plugin enables sharing of your content via popular social networks and can convert Twitter names and hashtags to links. Easy & configurable.
@@ -45,6 +45,10 @@ The plugin uses a list to position the buttons. You can easily change the css to
 
 Since version 1.3.0 it is possible to choose if the buttons should be displayed on posts, pages or both. The shortcode will work on both regardless of this choice.
 
+= Excerpts =
+
+Version 1.3.0 removed the buttons from excerpts because some themes did not parse the buttons correctly in the excerpt. Version 1.3.1 includes an option where you can choose to display buttons in excerpts. This is disabled by default, you can enable it but be aware it doesn't work correctly on some themes.
+
 = Using it somewhere else =
 
 If you want to display the buttons outside of your content you can use the following code where you want the buttons to appear:
@@ -71,6 +75,10 @@ Upload the Social Sharing Toolkit plugin to the wp-content/plugins/ folder on yo
 
 == Upgrade Notice ==
 
+= 1.3.1 =
+
+Version 1.3.1 includes an option to display buttons in excerpts.
+
 = 1.3.0 =
 
 Please update to version 1.3.0 for several bug fixes and enhancements.
@@ -87,6 +95,9 @@ New widget included in version 1.2.0.
 Please update to version 1.0.1 to prevent an unexpected printing of the page title.
 
 == Changelog ==
+
+= 1.3.1 =
+* Added feature to choose if buttons display in excerpts (doesn't work on some themes)
 
 = 1.3.0 =
 * Added feature to display buttons only on posts, only on pages or on posts and pages 

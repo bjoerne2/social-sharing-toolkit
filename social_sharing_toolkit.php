@@ -3,7 +3,7 @@
 Plugin Name: Social Sharing Toolkit
 Plugin URI: http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 1.3.0
+Version: 1.3.1
 Author: Marijn Rongen
 Author URI: http://www.marijnrongen.com
 */
@@ -16,7 +16,7 @@ class MR_Social_Sharing_Toolkit {
 	}
 
 	function get_options() {
-		$this->options = array('share' => 1, 'like' => 1, 'tweet' => 1, 'tumblr' => 1, 'stumble' => 1, 'plus' => 1, 'digg' => 1, 'reddit' => 1, 'myspace' => 1, 'hyves' => 1, 'twitter_handle' => '', 'position' => 'none', 'types' => 'both', 'layout' => 'none', 'linkify_content' => 0, 'linkify_comments' => 0, 'twitter_handles' => 0, 'twitter_hashtags' => 0);
+		$this->options = array('share' => 1, 'like' => 1, 'tweet' => 1, 'tumblr' => 1, 'stumble' => 1, 'plus' => 1, 'digg' => 1, 'reddit' => 1, 'myspace' => 1, 'hyves' => 1, 'twitter_handle' => '', 'position' => 'none', 'types' => 'both', 'include_excerpts' => 0, 'layout' => 'none', 'linkify_content' => 0, 'linkify_comments' => 0, 'twitter_handles' => 0, 'twitter_hashtags' => 0);
 		foreach ($this->options as $key => $val) {
 			$this->options[$key] = get_option( $key, $val );
 		}
@@ -103,6 +103,15 @@ class MR_Social_Sharing_Toolkit {
 			echo '<span class="description"> '.__("The shortcode [social_share/] can always be used on posts and pages", 'mr_social_sharing').'</span>';
 		}
 		echo '
+								</td>
+							</tr>
+							<tr valign="top">
+								<th scope="row">
+								</th>
+								<td>
+									<label for="include_excerpts"><input type="checkbox" name="include_excerpts" id="include_excerpts"';
+		if ($this->options['include_excerpts'] == 1) { echo ' checked="checked"';}
+		echo ' value="1" /> Include buttons in excerpts</label><span class="description"> '.__("Some themes will not correctly display the buttons in excerpts", 'mr_social_sharing').'</span>
 								</td>
 							</tr>
 							<tr valign="top">
@@ -241,7 +250,7 @@ class MR_Social_Sharing_Toolkit {
 		$class = 'mr_social_sharing_'.$layout;
 		$bookmarks = '<div class="mr_social_sharing">
 					<ul class="mr_social_sharing">
-						<!-- Social Sharing Toolkit v1.3.0 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->';
+						<!-- Social Sharing Toolkit v1.3.1 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->';
 		if ($this->options['like'] == 1) {
 			$bookmarks .= '
 						<li class="'.$class.'">
@@ -436,7 +445,7 @@ class MR_Social_Sharing_Toolkit {
 	
 	function share($content) {
 		$type = get_post_type().'s';
-		if (($this->options['types'] == $type || $this->options['types'] == 'both') && ($type != 'pages' && is_single() || $type == 'pages' && !is_single())) {
+		if (($this->options['types'] == $type || $this->options['types'] == 'both') && (($type != 'pages' && (is_single() || $this->options['include_excerpts'] == 1)) || $type == 'pages' && !is_single())) {
 			if ($this->options['position'] == 'top') {
 				$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false));
 				$content = $bookmarks.$content;	
@@ -451,7 +460,7 @@ class MR_Social_Sharing_Toolkit {
 	
 	function share_shortcode() {
 		$bookmarks = '';
-		if ($this->options['position'] == 'shortcode' && is_single()) {
+		if ($this->options['position'] == 'shortcode' && (is_single() || $this->options['include_excerpts'] == 1)) {
 			$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false));
 		}
 		return $bookmarks;
