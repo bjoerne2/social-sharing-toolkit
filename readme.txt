@@ -1,10 +1,10 @@
 === Social Sharing Toolkit ===
 Contributors: MarijnRongen
 Donate link: http://www.marijnrongen.com/wordpress-plugins/
-Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Twitter, Tweet, StumbleUpon, Stumble, Tumblr, Digg, Reddit, MySpace, Hyves, recommend, social, sharing, widget
+Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Twitter, Tweet, StumbleUpon, Stumble, Tumblr, Digg, Reddit, MySpace, Hyves, recommend, social, sharing, widget, page, post
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable tag: 1.2.5
+Stable tag: 1.3.0
 License: GPLv2 or later
 
 This plugin enables sharing of your content via popular social networks and can convert Twitter names and hashtags to links. Easy & configurable.
@@ -41,13 +41,17 @@ You can however choose a different button layout for the widget. For example you
 
 The plugin uses a list to position the buttons. You can easily change the css to match your blog style by changing the css file in the plugin directory.
 
+= Posts, pages or both =
+
+Since version 1.3.0 it is possible to choose if the buttons should be displayed on posts, pages or both. The shortcode will work on both regardless of this choice.
+
 = Using it somewhere else =
 
 If you want to display the buttons outside of your content you can use the following code where you want the buttons to appear:
-`<?php
+'<?php
 	$social_sharing_toolkit = new MR_Social_Sharing_Toolkit();
 	echo $social_sharing_toolkit->create_bookmarks();
-?>`
+?>'
 
 = Automatic Twitter links =
 
@@ -60,12 +64,16 @@ Upload the Social Sharing Toolkit plugin to the wp-content/plugins/ folder on yo
 
 == Screenshots ==
 
-1. Plugin configuration page (before 1.2.5)
+1. Plugin configuration page
 2. Without counters (Facebook demands some space)
 3. Several wide buttons
 4. Several high buttons
 
 == Upgrade Notice ==
+
+= 1.3.0 =
+
+Please update to version 1.3.0 for several bug fixes and enhancements.
 
 = 1.2.5 =
 
@@ -79,6 +87,13 @@ New widget included in version 1.2.0.
 Please update to version 1.0.1 to prevent an unexpected printing of the page title.
 
 == Changelog ==
+
+= 1.3.0 =
+* Added feature to display buttons only on posts, only on pages or on posts and pages 
+* Improved hashtag to link conversion
+* Fixed Facebook language to en_US to prevent width issues
+* Fixed excerpt issue
+* Fixed some css issues 
 
 = 1.2.5 =
 * Added title field to widget

@@ -3,7 +3,7 @@
 Plugin Name: Social Sharing Toolkit
 Plugin URI: http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 1.2.5
+Version: 1.3.0
 Author: Marijn Rongen
 Author URI: http://www.marijnrongen.com
 */
@@ -16,7 +16,7 @@ class MR_Social_Sharing_Toolkit {
 	}
 
 	function get_options() {
-		$this->options = array('share' => 1, 'like' => 1, 'tweet' => 1, 'tumblr' => 1, 'stumble' => 1, 'plus' => 1, 'digg' => 1, 'reddit' => 1, 'myspace' => 1, 'hyves' => 1, 'twitter_handle' => '', 'position' => 'none', 'layout' => 'none', 'linkify_content' => 0, 'linkify_comments' => 0, 'twitter_handles' => 0, 'twitter_hashtags' => 0);
+		$this->options = array('share' => 1, 'like' => 1, 'tweet' => 1, 'tumblr' => 1, 'stumble' => 1, 'plus' => 1, 'digg' => 1, 'reddit' => 1, 'myspace' => 1, 'hyves' => 1, 'twitter_handle' => '', 'position' => 'none', 'types' => 'both', 'layout' => 'none', 'linkify_content' => 0, 'linkify_comments' => 0, 'twitter_handles' => 0, 'twitter_hashtags' => 0);
 		foreach ($this->options as $key => $val) {
 			$this->options[$key] = get_option( $key, $val );
 		}
@@ -80,6 +80,28 @@ class MR_Social_Sharing_Toolkit {
 		if ($this->options['position'] == 'shortcode') { 
 			echo '<span class="description"> '.__("Use the shortcode [social_share/] where you want the buttons to appear", 'mr_social_sharing').'</span>';
 		}			
+		echo '
+								</td>
+							</tr>
+							<tr valign="top">
+								<th scope="row">
+									<label for="types">Place buttons on</label>
+								</th>
+								<td>
+									<select name="types" id="types">
+										<option value="both"';
+		if ($this->options['types'] == 'both') { echo ' selected="selected"';}
+		echo '>On posts and pages</option>
+										<option value="posts"';
+		if ($this->options['types'] == 'posts') { echo ' selected="selected"';}
+		echo '>Only on posts</option>
+										<option value="pages"';
+		if ($this->options['types'] == 'pages') { echo ' selected="selected"';}
+		echo '>Only on pages</option>
+									</select>';
+		if ($this->options['position'] == 'shortcode') { 
+			echo '<span class="description"> '.__("The shortcode [social_share/] can always be used on posts and pages", 'mr_social_sharing').'</span>';
+		}
 		echo '
 								</td>
 							</tr>
@@ -205,22 +227,25 @@ class MR_Social_Sharing_Toolkit {
 		}
 		if ($this->options['position'] == 'none' || $this->options['position'] == 'shortcode') {
 			return false;
-		}
+		} 
 		return true;
 	}
 	
 	function create_bookmarks($url = '', $title = '', $layout = '') {
+		$url = trim($url);
+		$title = trim($title);
 		if ($url == '') {
 			$url = 'http://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];	
 		}
 		$layout = ($layout != '') ? $layout : $this->options['layout'];
 		$class = 'mr_social_sharing_'.$layout;
-		$bookmarks = '<ul class="mr_social_sharing">
-						<!-- Social Sharing Toolkit v1.2.5 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->';
+		$bookmarks = '<div class="mr_social_sharing">
+					<ul class="mr_social_sharing">
+						<!-- Social Sharing Toolkit v1.3.0 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->';
 		if ($this->options['like'] == 1) {
 			$bookmarks .= '
 						<li class="'.$class.'">
-							<iframe src="http://www.facebook.com/plugins/like.php?href='.$url.'&amp;layout=';
+							<iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&amp;href='.urlencode($url).'&amp;layout=';
 			switch ($layout) {
 				case 'horizontal':
 					$bookmarks .= 'button_count';
@@ -331,7 +356,7 @@ class MR_Social_Sharing_Toolkit {
 					$bookmarks .= '4';
 					break;
 			}
-			$bookmarks .= '&r='.$url.'"></script>
+			$bookmarks .= '&amp;r='.urlencode($url).'"></script>
 						</li>';	
 		}
 		if ($this->options['digg'] == 1) {
@@ -349,7 +374,7 @@ class MR_Social_Sharing_Toolkit {
 					$bookmarks .= 'DiggIcon';
 					break;
 			}			
-			$bookmarks .= '" href="http://digg.com/submit?url='.$url.'&amp;title='.$title.'"></a>
+			$bookmarks .= '" href="http://digg.com/submit?url='.urlencode($url).'&amp;title='.urlencode($title).'"></a>
 						</li>';
 		}
 		if ($this->options['reddit'] == 1) {
@@ -374,7 +399,7 @@ class MR_Social_Sharing_Toolkit {
 					break;
 				default:
 					$bookmarks .= '
-							<a href="http://www.reddit.com/submit" onclick="window.location = \'http://www.reddit.com/submit?url='.$url.'\'; return false"><img src="http://www.reddit.com/static/spreddit1.gif" alt="submit to reddit" border="0" /></a>';
+							<a href="http://www.reddit.com/submit" onclick="window.location = \'http://www.reddit.com/submit?url='.urlencode($url).'\'; return false"><img src="http://www.reddit.com/static/spreddit1.gif" alt="submit to reddit" border="0" /></a>';
 					break;
 			}	
 			$bookmarks .= '
@@ -383,7 +408,7 @@ class MR_Social_Sharing_Toolkit {
 		if ($this->options['myspace'] == 1) {
 			$bookmarks .= '
 						<li class="'.$class.'">
-							<a href="javascript:void(window.open(\'http://www.myspace.com/Modules/PostTo/Pages/?u='.$url.'\',\'ptm\',\'height=450,width=550\').focus())">
+							<a href="javascript:void(window.open(\'http://www.myspace.com/Modules/PostTo/Pages/?u='.urlencode($url).'\',\'ptm\',\'height=450,width=550\').focus())">
     							<img src="http://cms.myspacecdn.com/cms//ShareOnMySpace/Myspace_btn_';
     		switch ($layout) {
     			case 'horizontal':
@@ -400,30 +425,34 @@ class MR_Social_Sharing_Toolkit {
 		if ($this->options['hyves'] == 1) {
 			$bookmarks .= '
 						<li class="'.$class.'">
-							<iframe src="http://www.hyves.nl/respect/button?url='.$url.'&amp;title='.$title.'" style="border: medium none; overflow:hidden; width:150px; height:21px;" scrolling="no" frameborder="0" allowTransparency="true" ></iframe>
+							<iframe src="http://www.hyves.nl/respect/button?url='.urlencode($url).'&amp;title='.urlencode($title).'" style="border: medium none; overflow:hidden; width:150px; height:21px;" scrolling="no" frameborder="0" allowTransparency="true" ></iframe>
 						</li>';
 		}
 		$bookmarks .= '
-					</ul>';
+					</ul>
+				</div>';
 		return $bookmarks;	
 	}
 	
 	function share($content) {
-		if ($this->options['position'] == 'top') {
-			$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false));
-			$content = $bookmarks.$content;	
-		}
-		if ($this->options['position'] == 'bottom') {
-			$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false));
-			$content .= $bookmarks;
+		$type = get_post_type().'s';
+		if (($this->options['types'] == $type || $this->options['types'] == 'both') && ($type != 'pages' && is_single() || $type == 'pages' && !is_single())) {
+			if ($this->options['position'] == 'top') {
+				$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false));
+				$content = $bookmarks.$content;	
+			}
+			if ($this->options['position'] == 'bottom') {
+				$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false));
+				$content .= $bookmarks;
+			}
 		}
 		return $content;
 	}
 	
 	function share_shortcode() {
 		$bookmarks = '';
-		if ($this->options['position'] == 'shortcode') {
-			$bookmarks = $this->create_bookmarks();
+		if ($this->options['position'] == 'shortcode' && is_single()) {
+			$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false));
 		}
 		return $bookmarks;
 	}
@@ -447,7 +476,7 @@ class MR_Social_Sharing_Toolkit {
 			$content = preg_replace("/(^|\s)*(@([a-zA-Z0-9-_]{1,15}))(\.*[^|\n|\r|\t|\s|\<|\&]*)/i", "$1<a href=\"http://twitter.com/$3\">$2</a>$4", $content);
 		}
 		if ($this->options['twitter_hashtags'] == 1) {
-			$content = preg_replace("/(^|\s)*((?:(?<!&))#([a-zA-Z0-9]+))([^|\n|\r|\t|\s|\.|\<|\&]*)/i", "$1<a href=\"http://twitter.com/search/$3\">$2</a>$4", $content);
+			$content = preg_replace("/(^|\s)*((?:(?<!&))#([a-zA-Z0-9]+^[-|;]))([^|\n|\r|\t|\s|\.|\<|\&]*)/i", "$1<a href=\"http://twitter.com/search/$3\">$2</a>$4", $content);
 		}
 		return $content;
 	}
@@ -464,7 +493,7 @@ class MR_Social_Sharing_Toolkit_Widget extends WP_Widget {
 		$MR_Social_Sharing_Toolkit = new MR_Social_Sharing_Toolkit();
 		$widget_layout = empty($instance['widget_layout']) ? 'none' : $instance['widget_layout'];
 		$widget_title = empty($instance['widget_title']) ? '' : $instance['widget_title'];
-		$bookmarks = $MR_Social_Sharing_Toolkit->create_bookmarks('', '', $widget_layout);	
+		$bookmarks = $MR_Social_Sharing_Toolkit->create_bookmarks('', wp_title('', false), $widget_layout);	
 		echo $before_widget;
 		if ($widget_title != '') {
 			echo $before_title . $widget_title . $after_title;
