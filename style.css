@@ -1,0 +1,63 @@
+div.mr_social_sharing, div.mr_social_sharing {
+	height: auto;
+	width: 100%;
+	overflow: hidden;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+
+ul.mr_social_sharing, ul.mr_social_sharing {
+	list-style-type: none !important;
+	float: left;
+	clear: both;
+	display: block;
+	width: 100%;
+	height: auto;
+	text-align: left;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+
+li.mr_social_sharing_none, li.mr_social_sharing_widget_none {
+	list-style-type: none !important;
+	float: left;
+	width: auto;
+	height: 24px;
+	margin: 0 !important;
+	padding: 4px !important;
+	border: 0 !important;
+}
+
+li.mr_social_sharing_horizontal, li.mr_social_sharing_widget_horizontal {
+	list-style-type: none !important;
+	float: left;
+	width: 150px;	
+	height: 24px;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+
+li.mr_social_sharing_vertical, li.mr_social_sharing_widget_vertical {
+	list-style-type: none !important;
+	float: left;
+	width: 64px;
+	height: 70px;
+	text-align: center;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+
+li.mr_social_sharing_none img, li.mr_social_sharing_horizontal img, li.mr_social_sharing_vertical img, li.mr_social_sharing_widget_none img, li.mr_social_sharing_widget_horizontal img, li.mr_social_sharing_widget_vertical img {
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+
+li.mr_social_sharing_none a, li.mr_social_sharing_horizontal a, li.mr_social_sharing_vertical a, li.mr_social_sharing_widget_none a, li.mr_social_sharing_widget_horizontal a, li.mr_social_sharing_widget_vertical a, li.mr_social_sharing_none a:HOVER, li.mr_social_sharing_horizontal a:HOVER, li.mr_social_sharing_vertical a:HOVER, li.mr_social_sharing_widget_none a:HOVER, li.mr_social_sharing_widget_horizontal a:HOVER, li.mr_social_sharing_widget_vertical a:HOVER {
+	background: none;
+	border: 0 !important;
+}
