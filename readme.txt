@@ -4,7 +4,7 @@ Donate link: http://www.marijnrongen.com/wordpress-plugins/
 Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Twitter, Tweet, StumbleUpon, Stumble, Tumblr, Digg, Reddit, MySpace, Hyves, recommend, social, sharing, widget, shortcode, page, post
 Requires at least: 3.0
 Tested up to: 3.2.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 
 This plugin enables sharing of your content via popular social networks and can convert Twitter names and hashtags to links. Easy & configurable.
@@ -47,24 +47,35 @@ Since version 1.3.0 it is possible to choose if the buttons should be displayed 
 
 = Excerpts =
 
-Version 1.3.0 removed the buttons from excerpts because some themes did not parse the buttons correctly in the excerpt. Version 1.3.1 includes an option where you can choose to display buttons in excerpts. This is disabled by default, you can enable it but be aware it doesn't work correctly on some themes.
-
-= Using it somewhere else =
-
-If you want to display the buttons outside of your content you can use the following code where you want the buttons to appear:
-'<?php
-	$social_sharing_toolkit = new MR_Social_Sharing_Toolkit();
-	echo $social_sharing_toolkit->create_bookmarks();
-?>'
+Version 1.3.0 removed the buttons from excerpts because some themes did not parse the buttons correctly in the excerpt. Version 1.3.1 includes an option where you can choose to display buttons in excerpts. This is enabled by default, you can disable it if your theme has problems displaying the buttons.
 
 = Automatic Twitter links =
 
 This plugin also includes a configurable & improved version of my earlier Automatic Twitter Links plugin. You can decide if you want to convert Twitter names and/or hashtags to links. 
 Twitter names will link to their Twitter profile and hashtags will link to the Twitter search page.
 
+== Frequently Asked Questions ==
+
+= My excerpts aren't displaying the buttons but some text is displayed =
+
+You must disable the option "Include buttons in excerpts", it is enabled by default but some themes use custom excerpts which do not correctly parse the buttons.
+
+= The buttons are not showing on my posts in the loop =
+
+You must enable the option "Include buttons in excerpts", but keep in mind some themes use custom excerpts which do not correctly parse the buttons.
+
+= How do I use display the buttons somewhere else (outside the loop) =
+
+If you want to display the buttons somewhere else on your site you can use the following code where you want the buttons to appear:
+`<?php
+	$social_sharing_toolkit = new MR_Social_Sharing_Toolkit();
+	echo $social_sharing_toolkit->create_bookmarks();
+?>`
+
+
 == Installation ==
 
-Upload the Social Sharing Toolkit plugin to the wp-content/plugins/ folder on your website, activate it and use the Social Sharing Toolkit page under Settings to configure your toolkit.
+Upload the Social Sharing Toolkit plugin to the `/wp-content/plugins/` folder on your website, activate it and use the 'Social Sharing Toolkit page' under 'Settings' to configure your toolkit.
 
 == Screenshots ==
 
@@ -95,6 +106,11 @@ New widget included in version 1.2.0.
 Please update to version 1.0.1 to prevent an unexpected printing of the page title.
 
 == Changelog ==
+
+= 1.3.2 =
+* Added FAQ to readme
+* Enabled "Include buttons in excerpts" option by default
+* Fixed minor title issue with tweet, tumblr and myspace buttons
 
 = 1.3.1 =
 * Added feature to choose if buttons display in excerpts (doesn't work on some themes)

@@ -3,7 +3,7 @@
 Plugin Name: Social Sharing Toolkit
 Plugin URI: http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 1.3.1
+Version: 1.3.2
 Author: Marijn Rongen
 Author URI: http://www.marijnrongen.com
 */
@@ -16,7 +16,7 @@ class MR_Social_Sharing_Toolkit {
 	}
 
 	function get_options() {
-		$this->options = array('share' => 1, 'like' => 1, 'tweet' => 1, 'tumblr' => 1, 'stumble' => 1, 'plus' => 1, 'digg' => 1, 'reddit' => 1, 'myspace' => 1, 'hyves' => 1, 'twitter_handle' => '', 'position' => 'none', 'types' => 'both', 'include_excerpts' => 0, 'layout' => 'none', 'linkify_content' => 0, 'linkify_comments' => 0, 'twitter_handles' => 0, 'twitter_hashtags' => 0);
+		$this->options = array('share' => 1, 'like' => 1, 'tweet' => 1, 'tumblr' => 1, 'stumble' => 1, 'plus' => 1, 'digg' => 1, 'reddit' => 1, 'myspace' => 1, 'hyves' => 1, 'twitter_handle' => '', 'position' => 'none', 'types' => 'both', 'include_excerpts' => 1, 'layout' => 'none', 'linkify_content' => 0, 'linkify_comments' => 0, 'twitter_handles' => 0, 'twitter_hashtags' => 0);
 		foreach ($this->options as $key => $val) {
 			$this->options[$key] = get_option( $key, $val );
 		}
@@ -250,7 +250,7 @@ class MR_Social_Sharing_Toolkit {
 		$class = 'mr_social_sharing_'.$layout;
 		$bookmarks = '<div class="mr_social_sharing">
 					<ul class="mr_social_sharing">
-						<!-- Social Sharing Toolkit v1.3.1 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->';
+						<!-- Social Sharing Toolkit v1.3.2 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->';
 		if ($this->options['like'] == 1) {
 			$bookmarks .= '
 						<li class="'.$class.'">
@@ -291,7 +291,7 @@ class MR_Social_Sharing_Toolkit {
 					break;
 			}
 			if ($this->options['twitter_handle'] != '') {
-				$bookmarks .= ' data-via="'.$this->options['twitter_handle'].'"';
+				$bookmarks .= ' data-text="'.$title.'" data-via="'.$this->options['twitter_handle'].'"';
 			}
 			$bookmarks .= '>Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 						</li>';
@@ -335,7 +335,7 @@ class MR_Social_Sharing_Toolkit {
 		if ($this->options['tumblr'] == 1) {
 			$bookmarks .= '
 						<li class="'.$class.'">
-							<a href="http://www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; ';
+							<a href="http://www.tumblr.com/share/link?url='.urlencode($url).'&name='.urlencode($title).'" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; ';
 			switch ($layout) {
 				case 'horizontal':
 					$bookmarks .= 'width:81px; height:20px; background:url(\'http://platform.tumblr.com/v1/share_1.png\')';
@@ -417,7 +417,7 @@ class MR_Social_Sharing_Toolkit {
 		if ($this->options['myspace'] == 1) {
 			$bookmarks .= '
 						<li class="'.$class.'">
-							<a href="javascript:void(window.open(\'http://www.myspace.com/Modules/PostTo/Pages/?u='.urlencode($url).'\',\'ptm\',\'height=450,width=550\').focus())">
+							<a href="javascript:void(window.open(\'http://www.myspace.com/Modules/PostTo/Pages/?t='.urlencode($title).'&amp;u='.urlencode($url).'\',\'ptm\',\'height=450,width=550\').focus())">
     							<img src="http://cms.myspacecdn.com/cms//ShareOnMySpace/Myspace_btn_';
     		switch ($layout) {
     			case 'horizontal':
