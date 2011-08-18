@@ -3,7 +3,7 @@
 Plugin Name: Social Sharing Toolkit
 Plugin URI: http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 2.0.2
+Version: 2.0.3
 Author: Marijn Rongen
 Author URI: http://www.marijnrongen.com
 */
@@ -451,7 +451,7 @@ class MR_Social_Sharing_Toolkit {
 			$url = 'http://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];	
 		}
 		$bookmarks = '
-				<!-- Social Sharing Toolkit v2.0.2 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->
+				<!-- Social Sharing Toolkit v2.0.3 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->
 				<div class="mr_social_sharing_wrapper">';
 		foreach ($this->options['mr_social_sharing_'.$type.'button_order'] as $button) {
 			if ($this->options['mr_social_sharing_'.$type.'buttons'][$button]['enable'] == 1) {
@@ -466,7 +466,7 @@ class MR_Social_Sharing_Toolkit {
 	
 	function create_followers() {
 		$followers = '
-				<!-- Social Sharing Toolkit v2.0.2 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->
+				<!-- Social Sharing Toolkit v2.0.3 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->
 				<div class="mr_social_sharing_wrapper">';
 		foreach ($this->options['mr_social_sharing_follow_button_order'] as $button) {
 			if ($this->options['mr_social_sharing_follow_buttons'][$button]['enable'] == 1) {
@@ -481,23 +481,18 @@ class MR_Social_Sharing_Toolkit {
 	
 	function get_bookmark_button($button, $url, $title, $type, $display = 'span', $align = '', $id = '') {
 		$button = 'get_'.$button;
-		$retval = '
-					<'.$display.' class="mr_social_sharing'.$align.'">'.$this->$button($url, $title, $type, $id).'
-					</'.$display.'>';
+		$retval = '<'.$display.' class="mr_social_sharing'.$align.'">'.$this->$button($url, $title, $type, $id).'</'.$display.'>';
 		return $retval;
 	}
 	
 	function get_follow_button($button, $type, $display = 'span', $align = '', $id = '') {
 		$button = 'get_'.$button;
-		$retval = '
-					<'.$display.' class="mr_social_sharing'.$align.'">'.$this->$button($type, $id).'
-					</'.$display.'>';
+		$retval = '<'.$display.' class="mr_social_sharing'.$align.'">'.$this->$button($type, $id).'</'.$display.'>';
 		return $retval;
 	}
 	
 	function get_fb_like($url, $title, $type, $id) {
-		$retval = '
-							<iframe src="http://www.facebook.com/plugins/like.php?locale=en_US&amp;href='.urlencode($url).'&amp;layout=';
+		$retval = '<iframe src="https://www.facebook.com/plugins/like.php?locale=en_US&amp;href='.urlencode($url).'&amp;layout=';
 		switch ($type) {
 			case 'horizontal':
 				$retval .= 'button_count';
@@ -520,25 +515,21 @@ class MR_Social_Sharing_Toolkit {
 	}
 	
 	function get_fb_send($url, $title, $type, $id) {
-		$retval = ' 
-							<div id="fb-root"></div>
-							<fb:send href="'.$url.'" font=""></fb:send>';
+		$retval = '<div id="fb-root"></div><fb:send href="'.$url.'" font=""></fb:send>';
 		return $retval;			
 	}
 	
 	function get_tw_tweet($url, $title, $type, $id) {
 		switch ($type) {
 			case 'horizontal':
-				$retval = '
-							<a href="http://twitter.com/share" class="twitter-share-button" data-url="'.$url.'" data-count="horizontal"';
+				$retval = '<a href="http://twitter.com/share" class="twitter-share-button" data-url="'.$url.'" data-count="horizontal"';
 				if ($id != '') {
 					$retval .= ' data-via="'.$id.'"';
 				}
 				$retval .= ' data-text="'.$title.'">Tweet</a>';
 				break;
 			case 'vertical':
-				$retval = '
-							<a href="http://twitter.com/share" class="twitter-share-button" data-url="'.$url.'" data-count="vertical"';
+				$retval = '<a href="http://twitter.com/share" class="twitter-share-button" data-url="'.$url.'" data-count="vertical"';
 				if ($id != '') {
 					$retval .= ' data-via="'.$id.'"';
 				}
@@ -559,8 +550,7 @@ class MR_Social_Sharing_Toolkit {
 	}
 	
 	function get_gl_plus($url, $title, $type, $id) {
-		$retval = '
-							<g:plusone';
+		$retval = '<g:plusone';
 		switch ($type) {
 			case 'horizontal':
 				$retval .= ' size="medium"';
@@ -579,16 +569,13 @@ class MR_Social_Sharing_Toolkit {
 	function get_li_share($url, $title, $type, $id) {
 		switch ($type) {
 			case 'horizontal':
-				$retval = '
-							<script type="IN/Share" data-url="'.$url.'" data-counter="right"></script>';
+				$retval = '<script type="IN/Share" data-url="'.$url.'" data-counter="right"></script>';
 				break;
 			case 'vertical':
-				$retval = '
-							<script type="IN/Share" data-url="'.$url.'" data-counter="top"></script>';
+				$retval = '<script type="IN/Share" data-url="'.$url.'" data-counter="top"></script>';
 				break;
 			case 'none':
-				$retval = '
-							<script type="IN/Share" data-url="'.$url.'"></script>';
+				$retval = '<script type="IN/Share" data-url="'.$url.'"></script>';
 				break;
 			default:
 				$url = 'http://www.linkedin.com/shareArticle?mini=true&amp;url='.urlencode($url).'&amp;title='.urlencode($title);
@@ -612,12 +599,10 @@ class MR_Social_Sharing_Toolkit {
 	function get_su_stumble($url, $title, $type, $id) {
 		switch ($type) {
 			case 'horizontal':
-				$retval = '
-							<script src="http://www.stumbleupon.com/hostedbadge.php?s=1&amp;r='.urlencode($url).'"></script>';
+				$retval = '<script src="http://www.stumbleupon.com/hostedbadge.php?s=1&amp;r='.urlencode($url).'"></script>';
 				break;
 			case 'vertical':
-				$retval = '
-							<script src="http://www.stumbleupon.com/hostedbadge.php?s=5&amp;r='.urlencode($url).'"></script>';
+				$retval = '<script src="http://www.stumbleupon.com/hostedbadge.php?s=5&amp;r='.urlencode($url).'"></script>';
 				break;
 			default:
 				$url = 'http://www.stumbleupon.com/submit?url='.urlencode($url).'&amp;title='.urlencode($title);
@@ -634,17 +619,11 @@ class MR_Social_Sharing_Toolkit {
 		switch ($type) {
 			case 'horizontal':
 				$hash = md5($url);
-				$retval = '
-							<div class="delicious_horizontal">
-   								<span class="delicious_hash">'.$hash.'</span><a class="mr_social_sharing_popup_link" href="http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='.urlencode($url).'&amp;title='.urlencode($title).'" target="_blank"></a>
-							</div>'; 
+				$retval = '<div class="delicious_horizontal"><span class="delicious_hash">'.$hash.'</span><a class="mr_social_sharing_popup_link" href="http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='.urlencode($url).'&amp;title='.urlencode($title).'" target="_blank"></a></div>'; 
 				break;
 			case 'vertical':
 				$hash = md5($url);
-				$retval = '
-							<div class="delicious_vertical">
-   								<span class="delicious_hash">'.$hash.'</span><a class="mr_social_sharing_popup_link" href="http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='.urlencode($url).'&amp;title='.urlencode($title).'" target="_blank"></a>
-							</div>'; 
+				$retval = '<div class="delicious_vertical"><span class="delicious_hash">'.$hash.'</span><a class="mr_social_sharing_popup_link" href="http://del.icio.us/post?v=4&amp;noui&amp;jump=close&amp;url='.urlencode($url).'&amp;title='.urlencode($title).'" target="_blank"></a></div>'; 
 				break;
 			default:
 				$url = 'http://del.icio.us/post?url='.urlencode($url).'&amp;title='.urlencode($title);
@@ -660,12 +639,10 @@ class MR_Social_Sharing_Toolkit {
 	function get_dg_digg($url, $title, $type, $id) {
 		switch ($type) {
 			case 'horizontal':
-				$retval = '
-							<a class="DiggThisButton DiggCompact" href="http://digg.com/submit?url='.urlencode($url).'&amp;title='.urlencode($title).'"></a>';
+				$retval = '<a class="DiggThisButton DiggCompact" href="http://digg.com/submit?url='.urlencode($url).'&amp;title='.urlencode($title).'"></a>';
 				break;
 			case 'vertical':
-				$retval = '
-							<a class="DiggThisButton DiggMedium" href="http://digg.com/submit?url='.urlencode($url).'&amp;title='.urlencode($title).'"></a>';
+				$retval = '<a class="DiggThisButton DiggMedium" href="http://digg.com/submit?url='.urlencode($url).'&amp;title='.urlencode($title).'"></a>';
 				break;
 			default:
 				$url = 'http://digg.com/submit?url='.urlencode($url).'&amp;title='.urlencode($title);
@@ -681,20 +658,17 @@ class MR_Social_Sharing_Toolkit {
 	function get_rd_reddit($url, $title, $type, $id) {
 		switch ($type) {
 			case 'horizontal':
-				$retval = '
-							<script type="text/javascript">
+				$retval = '<script type="text/javascript">
 							  reddit_url = "'.$url.'";
 							  reddit_title = "'.$title.'";
 							</script>
 							<script type="text/javascript" src="http://www.reddit.com/static/button/button1.js"></script>';
 				break;
 			case 'vertical':
-				$retval = '
-							<script type="text/javascript">
+				$retval = '<script type="text/javascript">
 							  reddit_url = "'.$url.'";
 							  reddit_title = "'.$title.'";
-							</script>
-							<script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script>';
+							</script><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script>';
 				break;
 			default:
 				$url = 'http://www.reddit.com/submit?url='.urlencode($url);
@@ -716,8 +690,7 @@ class MR_Social_Sharing_Toolkit {
 	}
 	
 	function get_hv_respect($url, $title, $type, $id) {
-		$retval = '
-							<iframe src="http://www.hyves.nl/respect/button?url='.urlencode($url).'&amp;title='.urlencode($title).'" style="border: medium none; overflow:hidden; width:150px; height:21px;" scrolling="no" frameborder="0" allowTransparency="true" ></iframe>';
+		$retval = '<iframe src="http://www.hyves.nl/respect/button?url='.urlencode($url).'&amp;title='.urlencode($title).'" style="border: medium none; overflow:hidden; width:150px; height:21px;" scrolling="no" frameborder="0" allowTransparency="true" ></iframe>';
 		return $retval;
 	}
 	
@@ -834,32 +807,25 @@ class MR_Social_Sharing_Toolkit {
 		}
 		switch ($type) {
 			case 'none':
-				$retval = '
-							<a href="'.$url.'"><img src="'.plugins_url('/images/buttons/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/></a>';
+				$retval = '<a href="'.$url.'"><img src="'.plugins_url('/images/buttons/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/></a>';
 				break;
 			case 'icon_small':
-				$retval = '
-							<a href="'.$url.'"><img src="'.plugins_url('/images/icons_small/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/></a>';
+				$retval = '<a href="'.$url.'"><img src="'.plugins_url('/images/icons_small/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/></a>';
 				break;
 			case 'icon_small_text':
-				$retval = '
-							<a href="'.$url.'"><img src="'.plugins_url('/images/icons_small/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/><span class="mr_small_icon">'.$text.'</span></a>';
+				$retval = '<a href="'.$url.'"><img src="'.plugins_url('/images/icons_small/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/><span class="mr_small_icon">'.$text.'</span></a>';
 				break;
 			case 'icon_medium':
-				$retval = '
-							<a href="'.$url.'"><img src="'.plugins_url('/images/icons_medium/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/></a>';
+				$retval = '<a href="'.$url.'"><img src="'.plugins_url('/images/icons_medium/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/></a>';
 				break;
 			case 'icon_medium_text':
-				$retval = '
-							<a href="'.$url.'"><img src="'.plugins_url('/images/icons_medium/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/><span class="mr_medium_icon">'.$text.'</span></a>';
+				$retval = '<a href="'.$url.'"><img src="'.plugins_url('/images/icons_medium/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/><span class="mr_medium_icon">'.$text.'</span></a>';
 				break;
 			case 'icon_large':
-				$retval = '
-							<a href="'.$url.'"><img src="'.plugins_url('/images/icons_large/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/></a>';
+				$retval = '<a href="'.$url.'"><img src="'.plugins_url('/images/icons_large/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/></a>';
 				break;
 			default:
-				$retval = '
-							<a href="'.$url.'"><img src="'.plugins_url('/images/icons_small/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/></a>';
+				$retval = '<a href="'.$url.'"><img src="'.plugins_url('/images/icons_small/'.$icon.'.png', __FILE__).'" alt="'.$title.'" title="'.$title.'"/></a>';
 				break;
 		}		
 		return $retval;	
