@@ -3,7 +3,7 @@
 Plugin Name: Social Sharing Toolkit
 Plugin URI: http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 2.0.1
+Version: 2.0.2
 Author: Marijn Rongen
 Author URI: http://www.marijnrongen.com
 */
@@ -446,11 +446,12 @@ class MR_Social_Sharing_Toolkit {
 	function create_bookmarks($url = '', $title = '', $type = '') {
 		$url = trim($url);
 		$title = trim($title);
+		$title = html_entity_decode($title, ENT_QUOTES, 'UTF-8');
 		if ($url == '') {
 			$url = 'http://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];	
 		}
 		$bookmarks = '
-				<!-- Social Sharing Toolkit v2.0.1 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->
+				<!-- Social Sharing Toolkit v2.0.2 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->
 				<div class="mr_social_sharing_wrapper">';
 		foreach ($this->options['mr_social_sharing_'.$type.'button_order'] as $button) {
 			if ($this->options['mr_social_sharing_'.$type.'buttons'][$button]['enable'] == 1) {
@@ -465,7 +466,7 @@ class MR_Social_Sharing_Toolkit {
 	
 	function create_followers() {
 		$followers = '
-				<!-- Social Sharing Toolkit v2.0.1 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->
+				<!-- Social Sharing Toolkit v2.0.2 | http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/ -->
 				<div class="mr_social_sharing_wrapper">';
 		foreach ($this->options['mr_social_sharing_follow_button_order'] as $button) {
 			if ($this->options['mr_social_sharing_follow_buttons'][$button]['enable'] == 1) {
@@ -500,7 +501,7 @@ class MR_Social_Sharing_Toolkit {
 		switch ($type) {
 			case 'horizontal':
 				$retval .= 'button_count';
-				$width = 'auto';
+				$width = '90px';
 				$height = '20px';
 				break;
 			case 'vertical':
