@@ -1,0 +1,118 @@
+div.mr_social_sharing_wrapper {
+	height: auto!important;
+	width: 100%;
+	margin: 4px 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+}
+
+div.mr_social_sharing, span.mr_social_sharing, div.mr_social_sharing_top, span.mr_social_sharing_top {
+	display: block;
+	height: auto !important;
+	vertical-align: bottom !important;
+	margin: 2px !important;
+	padding: 0 !important;
+}
+
+span.mr_social_sharing, span.mr_social_sharing_top {
+	display: inline-block;
+}
+
+div.mr_social_sharing_top, span.mr_social_sharing_top {
+	vertical-align: top !important;
+}
+
+a.mr_social_sharing_popup_link, a.mr_social_sharing_popup_link:HOVER {
+	display: inline-block;
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	vertical-align: bottom !important;
+}
+
+.mr_social_sharing img, .mr_social_sharing_top img {
+	margin: 0 !important;
+	padding: 0 !important;
+	border: 0 !important;
+	vertical-align: bottom !important;
+}
+
+.mr_social_sharing span.mr_small_icon, .mr_social_sharing span.mr_medium_icon, .mr_social_sharing_top span.mr_small_icon, .mr_social_sharing_top span.mr_medium_icon {
+	display: inline-block;
+	font-family: 'Droid Sans',arial,sans-serif !important;
+	vertical-align: bottom !important;
+	font-size:10px !important;
+	font-weight: 200 !important;
+	margin: 4px 0 -4px 4px !important;
+	padding: 0 !important;
+}
+
+.mr_social_sharing span.mr_medium_icon, .mr_social_sharing_top span.mr_medium_icon {
+	font-size:12px !important;
+}
+
+.mr_social_sharing_top span.mr_small_icon, .mr_social_sharing_top span.mr_medium_icon {
+	vertical-align: top !important;
+}
+
+/* Delicious */
+
+.delicious_vertical {
+	display:inline-block;
+	width: 50px !important;
+	height:60px !important;
+	padding: 0px;
+	margin: 0px;
+	text-align:center;
+}
+
+.delicious_vertical a {
+	display: block;
+	font-family:'Droid Sans',arial,sans-serif !important;
+	font-size:15px !important;
+	font-weight: 200 !important;
+	color: #7e7e7e !important;
+	background:transparent url(images/delicious_counters.png) no-repeat scroll left top !important;
+	padding:7px 0px 40px 0px !important;
+	width: 50px !important;
+	height:13px !important;
+	line-height:12px;
+	text-decoration: none;
+}
+
+.delicious_vertical a:hover {
+	color: #0090ff !important;
+	text-decoration: none !important;
+}
+
+.delicious_horizontal {
+	display:inline-block;
+	height:20px !important;
+	width:120px !important;
+	padding: 0px;
+	margin: 0px;
+}
+
+.delicious_horizontal a {
+	display: block;
+	font-family:'Droid Sans',arial,sans-serif !important;
+	font-size:12px !important;
+	font-weight: 300 !important;
+	background:transparent url(images/delicious_counters.png) no-repeat scroll left bottom;
+	height:15px !important;
+	width:35px !important;
+	padding:0px 5px 5px 80px !important;
+	color: #7e7e7e !important;
+	text-decoration: none;
+	text-align:center;
+	white-space:nowrap;
+}
+ 
+.delicious_horizontal a:hover {
+	color: #0090ff !important;
+	text-decoration: none;
+}
+
+.delicious_vertical span.delicious_hash, .delicious_horizontal span.delicious_hash {
+	display: none !important;
+}
