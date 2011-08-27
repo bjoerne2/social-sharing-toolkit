@@ -1,0 +1,310 @@
+# Copyright (C) 2010 Social Sharing Toolkit
+# This file is distributed under the same license as the Social Sharing Toolkit package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Social Sharing Toolkit 2.0.4\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/social_sharing_toolkit\n"
+"POT-Creation-Date: 2011-08-26 09:20:52+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2011-08-27 15:58+0100\n"
+"Last-Translator: Marijn Rongen <m.rongen@active-bits.nl>\n"
+"Language-Team: Dutch <LL@li.org>\n"
+
+#: Button types:
+msgid "Button"
+msgstr "Knop"
+
+msgid "Button + text"
+msgstr "Knop + tekst"
+
+msgid "Button + side counter"
+msgstr "Knop + teller zijkant"
+
+msgid "Button + top counter"
+msgstr "Knop + teller boven"
+
+msgid "Small icon"
+msgstr "Klein icoon"
+
+msgid "Small icon + text"
+msgstr "Klein icoon + tekst"
+
+msgid "Medium icon"
+msgstr "Medium icoon"
+
+msgid "Medium icon + text"
+msgstr "Medium icoon + tekst"
+
+msgid "Large icon"
+msgstr "Groot icoon"
+
+msgid "Send email"
+msgstr "Stuur email"
+
+msgid "Divider"
+msgstr "Afscheiding"
+
+msgid "RSS Feed"
+msgstr "RSS Feed"
+
+#: Admin screen:
+msgid "Donate"
+msgstr "Doneren"
+
+msgid "Settings saved."
+msgstr "Instellingen opgeslagen"
+
+msgid "General settings"
+msgstr "Algemene instellingen"
+
+msgid "Posts & pages"
+msgstr "Berichten & pagina's"
+
+msgid "Shortcode"
+msgstr "Shortcode"
+
+msgid "Share Widget"
+msgstr "Deel Widget"
+
+msgid "Follow Widget"
+msgstr "Volg Widget"
+
+msgid "Automatic Twitter links"
+msgstr "Automatische Twitter links"
+
+#: General settings:
+msgid "Load JavaScript in footer"
+msgstr "JavaScript in footer laden"
+
+msgid "Improves performance but may not work on some themes"
+msgstr "Verbeterd werking maar werkt niet op met alle thema's"
+
+msgid "Choose where the buttons must be displayed and if the buttons should be displayed on posts, pages or both."
+msgstr "Kies of en waar de knoppen getoond moeten worden op berichten, pagina's of beide."
+
+msgid "Button location"
+msgstr "Locatie knoppen"
+
+msgid "Do not display"
+msgstr "Niet tonen"
+
+msgid "Display before content"
+msgstr "Vertoon voor inhoud"
+
+msgid "Display after content"
+msgstr "Vertoon na inhoud"
+
+msgid "Display before and after content"
+msgstr "Vertoon voor en na inhoud"
+
+msgid "Place buttons on"
+msgstr "Plaats knoppen op"
+
+msgid "Posts and pages"
+msgstr "Berichten en pagina's"
+
+msgid "Only on posts"
+msgstr "Enkel berichten"
+
+msgid "Only on pages"
+msgstr "Enkel pagina's"
+
+msgid "Enable shortcode"
+msgstr "Shortcode inschakelen"
+
+msgid "Use the shortcode [social_share/] where you want the buttons to appear"
+msgstr "Gebruik de shortcode [social_share/] waar je de knoppen wilt laten zien"
+
+msgid "Uncheck this box if you are having issues displaying the buttons with excerpts (some themes have custom excerpt functions which do not play nice with the plugin)."
+msgstr "Ontvink dit als u problemen ondervindt met de weergave van knoppen in samenvattingen (enkele thema's gebruiken eigen functies welke niet goed samenwerken met de plugin)."
+
+msgid "Include buttons in excerpts"
+msgstr "Toon knoppen in samenvattingen"
+
+#: Posts & Pages, Shortcode, Share and Follow widget settings:
+msgid "Check the boxes to display the button on your website. For each button you can select a separate style from the dropdown box. You can change the order of the buttons by dragging them to the desired location in the list. For the tweet button you can also fill in your Twitter username which will then be appended to the tweet (like via @WordPress)."
+msgstr "Vink de knoppen aan om deze weer te geven op uw website. Voor elke knop kunt u een apart stijl selecteren uit het selectieveld. U kunt de volgorde van de knoppen wijzigen door deze naar de gewenste positie in de lijst te slepen. Voor de Tweet knop kunt u ook uw Twitter gebruikersnaam invullen om deze aan de tweet toe te voegen (zoals via @WordPress)."
+
+msgid "Check the boxes to display the button on Social Sharing Toolkit Share widget. For each button you can select a separate style from the dropdown box. You can change the order of the buttons by dragging them to the desired location in the list. For the tweet button you can also fill in your Twitter username which will then be appended to the tweet (like via @WordPress)."
+msgstr "Vink de knoppen aan om deze weer te geven in de Social Sharing Toolkit Deel widget. Voor elke knop kunt u een apart stijl selecteren uit het selectieveld. U kunt de volgorde van de knoppen wijzigen door deze naar de gewenste positie in de lijst te slepen. Voor de Tweet knop kunt u ook uw Twitter gebruikersnaam invullen om deze aan de tweet toe te voegen (zoals via @WordPress)."
+
+msgid "For each widget you can enter a fixed url and title for the buttons, to do this"
+msgstr "Voor elke widget kunt u een vaste url en titel opgeven, om dit te doen"
+
+msgid "go to the widget configuration page"
+msgstr "ga naar de widget configuratie pagina"
+
+msgid "Check the boxes to display the button on Social Sharing Toolkit Follow widget. For each button you can select a separate style from the dropdown box. You can change the order of the buttons by dragging them to the desired location in the list."
+msgstr "Vink de knoppen aan om deze weer te geven in de Social Sharing Toolkit Volg widget. Voor elke knop kunt u een apart stijl selecteren uit het selectieveld. U kunt de volgorde van de knoppen wijzigen door deze naar de gewenste positie in de lijst te slepen."
+
+msgid "Change button order"
+msgstr "Verander volgorde van knoppen"
+
+msgid "Choose button orientation horizontal to display the buttons side by side, vertical will place them below each other. You can also select an alignment to better suit your theme."
+msgstr "Kies horizontale knop orientatie om de knoppen langs elkaar te tonen, de verticale orientatie zal de knoppen onder elkaar plaatsen. U kunt ook een uitlijning kiezen welke beter bij uw thema past. "
+
+msgid "Button orientation"
+msgstr "Knop orientatie"
+
+msgid "Horizontal"
+msgstr "Horizontaal"
+
+msgid "Vertical"
+msgstr "Verticaal"
+
+msgid "Button alignment"
+msgstr "Knop uitlijning"
+
+msgid "Align to bottom"
+msgstr "Uitlijnen op onderkant"
+
+msgid "Align to top"
+msgstr "Uitlijnen op bovenkant"
+
+#: Automatic Twitter links settings:
+msgid "For each button you only have to enter your id or username of the network as it appears in the url of your profile page. You will need to enter the complete url for the RSS Feed (including the http:// part) if you wish to display this button."
+msgstr "Voor elke knop hoeft u enkel uw id of gebruikersnaam van het netwerk op te geven zoals deze wordt weergegeven in de url van uw profielpagina. U dient de complete url op te geven voor de RSS Feed (inclusief http://) als u deze wenst weer te geven."
+
+msgid "To add the widget to your website"
+msgstr "Om de widget aan uw website toe te voegen"
+
+msgid "Select what you want to convert:"
+msgstr "Geef aan wat u wilt converteren:"
+
+msgid "Convert Twitter usernames"
+msgstr "Converteer Twitter gebruikersnamen"
+
+msgid "Convert hashtags"
+msgstr "Converteer hashtags"
+
+msgid "And where it should be converted:"
+msgstr "En waar het geconverteerd moet worden:"
+
+msgid "Convert in posts and pages"
+msgstr "Converteer in berichten en pagina's"
+
+msgid "Convert in comments"
+msgstr "Converteer in reacties"
+
+#: Widget settings:
+msgid "Title"
+msgstr "Titel"
+
+msgid "Fixed title"
+msgstr "Vaste titel"
+
+msgid "Fixed url"
+msgstr "Vaste url"
+
+msgid "Further configuration is done via the"
+msgstr "Verdere configuratie wordt gedaan via het"
+
+msgid "plugin admin screen"
+msgstr "plugin admin scherm"
+
+#: Thank you box:
+msgid "Thank you for using the Social Sharing Toolkit!"
+msgstr "Bedankt voor het gebruiken van de Social Sharing Toolkit!"
+
+msgid "For questions or requests about this plugin please use the"
+msgstr "Voor vragen of verzoeken over deze plugin gaat u naar de"
+
+msgid "official plugin page"
+msgstr "officiële plugin pagina"
+
+msgid "If you like the plugin I would appreciate it if you provide a rating of the"
+msgstr "Als u de plugin leuk vind waardeer ik het zeer als u een beoordeling achterlaat van de"
+
+msgid "plugin on WordPress.org"
+msgstr "plugin op WordPress.org"
+
+msgid "If you really like the plugin you can also"
+msgstr "Als u de plugin echt leuk vindt kunt u ook"
+
+msgid "donate here"
+msgstr "hier doneren"
+
+#: Facebook & Google+ language (same as you the WordPress Localized Language):
+msgid "en_US"
+msgstr "nl_NL"
+
+#: Facebook horizontal counter width:
+msgid "fb_horizontal_width"
+msgstr "125px"
+
+#: Facebook vertical counter width:
+msgid "fb_vertical_width"
+msgstr "91px"
+
+#: Facebook button width (to hide text):
+msgid "fb_standard_width"
+msgstr "93px"
+
+#: Button texts and titles:
+msgid "Share on"
+msgstr "Deel via"
+
+msgid "Submit to"
+msgstr "Voeg toe aan"
+
+msgid "Save on"
+msgstr "Opslaan op"
+
+msgid "Digg This"
+msgstr "Digg dit"
+
+msgid "Share via email"
+msgstr "Deel via email"
+
+msgid "Friend me on"
+msgstr "Bevriend me op"
+
+msgid "Follow me on"
+msgstr "Volg me op"
+
+msgid "My profile on"
+msgstr "Mijn profiel op"
+
+msgid "Follow my company on"
+msgstr "Volg mijn bedrijf op"
+
+msgid "Add me to your circles"
+msgstr "Voeg me toe aan je cirkels"
+
+msgid "Join my network on"
+msgstr "Wordt lid van mijn netwerk op"
+
+msgid "Watch me on"
+msgstr "Bekijk me op"
+
+msgid "My photostream on"
+msgstr "Mijn fotostream op"
+
+msgid "My Picasa Web Albums"
+msgstr "Mijn Picasa Web Albums"
+
+msgid "My deviantArt"
+msgstr "Mijn deviantArt"
+
+#. Plugin Name of the plugin/theme
+msgid "Social Sharing Toolkit"
+msgstr "Social Sharing Toolkit"
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/"
+msgstr "http://www.marijnrongen.com/wordpress-plugins/social_sharing_toolkit/"
+
+#. Description of the plugin/theme
+msgid "This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable."
+msgstr "Deze plugin maakt het mogelijk je inhoud te delen via populaire sociale netwerken en kan ook Twitter namen en hashtags converteren naar links. Makkelijk en configureerbaar."
+
+#. Author of the plugin/theme
+msgid "Marijn Rongen"
+msgstr "Marijn Rongen"
+
+#. Author URI of the plugin/theme
+msgid "http://www.marijnrongen.com"
+msgstr "http://www.marijnrongen.com"
+
