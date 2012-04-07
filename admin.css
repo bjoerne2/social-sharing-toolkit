@@ -1,5 +1,7 @@
 ul.tabs {
-	height: 24px;	
+	height: 24px;
+	padding: 0;
+	margin: 0;
 }
 
 ul.tabs li {
@@ -10,15 +12,24 @@ ul.tabs li.ui-state-default, ul.tabs li.ui-state-active {
 	height: 20px;
 	padding: 2px 4px;
 	margin: 0 0 0 2px;
-	background-color: #FEFEFE;
+	background-color: #F0F0F0;
 	border-color: #DFDFDF;
 	border-radius: 3px 3px 0 0;
 	border-style: solid;
-	border-width: 1px 1px 0 1px;	
+	border-width: 1px 1px 0 1px;
 }
 
 ul.tabs li.ui-state-active {
-	background-color: #F9F9F9;
+	background-color: #FFF;
+}
+
+ul.tabs li.ui-state-default a, ul.tabs li.ui-state-active a {
+	text-decoration: none;	
+}
+
+ul.tabs li.ui-state-active a {
+	color: #000;	
+	font-weight: bold;
 }
 
 div.mr_social_sharing_networks {
@@ -42,7 +53,7 @@ div.mr_social_sharing_networks {
 	padding: 0 0 10px 0;	
 }
 
-.mr_social_sharing_networks h3, .mr_social_sharing_networks p {
+.mr_social_sharing_networks h3, .mr_social_sharing_networks h4, .mr_social_sharing_networks p {
 	padding: 0 10px 0 10px;	
 }
 
@@ -134,4 +145,19 @@ ul#mr_social_sharing_networks li select, ul#mr_social_sharing_shortcode_networks
 
 label.check {
 	width: 400px;	
+}
+
+.banners {
+	text-align: center;
+}
+
+.banners a {
+	display: inline-block;
+	width: 468px;
+	height: 60px;
+	padding: 10px 0 0 0;
+}
+
+.banners a img {
+	border: 0;	
 }
