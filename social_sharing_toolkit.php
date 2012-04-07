@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Social Sharing Toolkit
-Plugin URI: http://www.active-bits.nl/support/social_sharing_toolkit/
+Plugin URI: http://www.active-bits.nl/support/social-sharing-toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 2.0.5
+Version: 2.0.6
 Author: Marijn Rongen
 Author URI: http://www.active-bits.nl
 */
@@ -333,7 +333,7 @@ class MR_Social_Sharing_Toolkit {
 						<label for="mr_social_sharing_opengraph_fixed_image" class="check"><input type="checkbox" name="mr_social_sharing_opengraph[fixed_image]" id="mr_social_sharing_opengraph_fixed_image"';
 		if ($this->options['mr_social_sharing_opengraph']['fixed_image'] == 1) { echo ' checked="checked"';}
 		echo ' value="1" /> '.__("Always use the default image", 'mr_social_sharing_toolkit').'</label><br/>
-						<p><span class="description">'.__("Check this box to always display the default image with you shared content", 'mr_social_sharing_toolkit').'</span></p>						
+						<p><span class="description">'.__("Check this box to always display the default image woth you shared content", 'mr_social_sharing_toolkit').'</span></p>						
 					</div>
 				</div>
 					<p class="submit">
@@ -468,7 +468,7 @@ class MR_Social_Sharing_Toolkit {
 	/* Output functions */
 	
 	function print_opengraph() {
-		echo '<!-- Open Graph tags provided by Social Sharing Toolkit v2.0.5 -->
+		echo '<!-- Open Graph tags provided by Social Sharing Toolkit v2.0.6 -->
 		<meta property="og:locale" content="'.str_replace('-', '_', get_bloginfo('language')).'"/>';
 		if (is_single() || is_page()) {
 			$excerpt = get_the_excerpt();
@@ -508,7 +508,8 @@ class MR_Social_Sharing_Toolkit {
 	  					$media = '';	
 	  				}
 				}
-			} else {
+			}		
+			if ($media == '') {
 				$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches);
 	  			$img = $matches[1][0];
 				if($img != '') {
@@ -654,9 +655,9 @@ class MR_Social_Sharing_Toolkit {
 		if ($this->options['mr_social_sharing_enable_shortcode'] == 1 && $this->options['mr_social_sharing_shortcode_buttons']['xi_xing']['enable'] == 1 && in_array($this->options['mr_social_sharing_shortcode_buttons']['xi_xing']['type'], array('none','horizontal','vertical'))) {
 			$xing_script = true;
 		}
-		/*if ($this->options['mr_social_sharing_follow_buttons']['xi_xing']['enable'] == 1 && in_array($this->options['mr_social_sharing_follow_buttons']['xi_xing']['type'], array('none','horizontal'))) {
+		if ($this->options['mr_social_sharing_follow_buttons']['xi_xing']['enable'] == 1 && in_array($this->options['mr_social_sharing_follow_buttons']['xi_xing']['type'], array('none','horizontal'))) {
 			$xing_script = true;
-		}*/
+		}
 		if (is_active_sidebar(is_active_widget( false, false, 'mr-social-sharing-toolkit-follow-widget', true))) {
 			if ($this->options['mr_social_sharing_follow_buttons']['follow_twitter']['enable'] == 1 && in_array($this->options['mr_social_sharing_follow_buttons']['follow_twitter']['type'], array('none','horizontal'))) {
 				$tweet_script = true;
@@ -738,7 +739,7 @@ class MR_Social_Sharing_Toolkit {
 			$url = 'http://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];	
 		}
 		$bookmarks = '
-				<!-- Social Sharing Toolkit v2.0.5 | http://www.active-bits.nl/support/social_sharing_toolkit/ -->
+				<!-- Social Sharing Toolkit v2.0.6 | http://www.active-bits.nl/support/social-sharing-toolkit/ -->
 				<div class="mr_social_sharing_wrapper">';
 		foreach ($this->options['mr_social_sharing_'.$type.'button_order'] as $button) {
 			if ($this->options['mr_social_sharing_'.$type.'buttons'][$button]['enable'] == 1) {
@@ -754,7 +755,7 @@ class MR_Social_Sharing_Toolkit {
 	
 	function create_followers() {
 		$followers = '
-				<!-- Social Sharing Toolkit v2.0.5 | http://www.active-bits.nl/support/social_sharing_toolkit/ -->
+				<!-- Social Sharing Toolkit v2.0.6 | http://www.active-bits.nl/support/social-sharing-toolkit/ -->
 				<div class="mr_social_sharing_wrapper">';
 		foreach ($this->options['mr_social_sharing_follow_button_order'] as $button) {
 			if ($this->options['mr_social_sharing_follow_buttons'][$button]['enable'] == 1) {
@@ -1190,7 +1191,7 @@ class MR_Social_Sharing_Toolkit {
 	
 	function get_follow_pinterest($type, $id) {
 		$url = 'http://pinterest.com/'.$id.'/';
-		$title = __('Follow me on','mr_social_sharing_toolkit').' Pinterest';
+		$title = __('Follow Me on Pinterest','mr_social_sharing_toolkit');
 		$text = 'Pinterest';
 		$icon = 'pinterest';
 		return $this->get_icon($type, $url, $title, $text, $icon);
@@ -1379,7 +1380,8 @@ class MR_Social_Sharing_Toolkit {
 	  				$media = '';	
 	  			}
 			}
-		} else {
+		} 
+		if ($media == '') {
 			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
   			$img = $matches[1][0];
 			if($img != '') {
@@ -1387,16 +1389,16 @@ class MR_Social_Sharing_Toolkit {
   			}	
 		}
 		$type = get_post_type();
-		if (in_array($type, $this->options['mr_social_sharing_types']) && is_single()) {
+		if (in_array($type, $this->options['mr_social_sharing_types']) && (is_single() || $type == 'page')) {
 			if ($this->options['mr_social_sharing_position'] == 'top') {
 				$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false), '', $media);
 				$content = $bookmarks.$content;	
 			}
-			if ($this->options['mr_social_sharing_position'] == 'bottom' && is_single()) {
+			if ($this->options['mr_social_sharing_position'] == 'bottom' && (is_single() || $type == 'page')) {
 				$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false), '', $media);
 				$content .= $bookmarks;
 			}
-			if ($this->options['mr_social_sharing_position'] == 'both' && is_single()) {
+			if ($this->options['mr_social_sharing_position'] == 'both' && (is_single() || $type == 'page')) {
 				$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false), '', $media);
 				$content = $bookmarks.$content.$bookmarks;
 			}
@@ -1414,7 +1416,8 @@ class MR_Social_Sharing_Toolkit {
 	  				$media = '';	
 	  			}
 			}
-		} else {
+		}		
+		if ($media == '') {
 			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches);
   			$img = $matches[1][0];
 			if($img != '') {
@@ -1441,7 +1444,8 @@ class MR_Social_Sharing_Toolkit {
 	  				$media = '';	
 	  			}
 			}
-		} else {
+		}		
+		if ($media == '') {
 			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
   			$img = $matches[1][0];
 			if($img != '') {
@@ -1483,7 +1487,8 @@ class MR_Social_Sharing_Toolkit {
 	  				$media = '';	
 	  			}
 			}
-		} else {
+		}		
+		if ($media == '') {
 			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', the_content(), $matches);
   			$img = $matches[1][0];
 			if($img != '') {
@@ -1552,8 +1557,9 @@ class MR_Social_Sharing_Toolkit_Widget extends WP_Widget {
 	  				$media = '';	
 	  			}
 			}
-		} else {
-			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
+		}		
+		if ($media == '') {
+			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches);
   			$img = $matches[1][0];
 			if($img != '') {
     			$media = $img;
