@@ -189,6 +189,12 @@ msgstr ""
 msgid "Default image URL"
 msgstr ""
 
+msgid "You can specify a link to an image you would like to use for Pinterest pins when no image is available"
+msgstr ""
+
+msgid "Check this box to always display the default image with your Pins"
+msgstr ""
+
 msgid "You can specify a link to an image you would like to include in your likes and shares"
 msgstr ""
 

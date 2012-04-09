@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=P8ZVN
 Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Pinterest, Google+, Twitter, Tweet, Buffer, Follow, StumbleUpon, Stumble, Tumblr, Delicious, Digg, Reddit, Myspace, Hyves, YouTube, Flickr, 500px, Picasa, deaviantART, mail, RSS, feed, connect, recommend, social, sharing, widget, shortcode, page, post, button, counter, icon, bitly, Open Graph
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 2.0.6
+Stable tag: 2.0.7
 License: GPLv2 or later
 
 Easy sharing and connecting on social networks. Display on posts or use widgets or shortcode. Also Twitter name/hashtag to link converter.
@@ -102,6 +102,11 @@ Twitter names will link to their Twitter profile and hashtags will link to the T
 
 Since version 2.0.5 the plugin has the option to use bitly to shorten the urls for the tweet button. To use it you need to register with bitly and fill in your bitly username and API key.
 
+= Pinterest =
+
+Since version 2.0.5 the plugin has the option to show Pinterest buttons. The plugin tries to find the featured image or first image in the content if available. If no image is available the button is omitted. 
+Since version 2.0.7 is is possible to enter the URL of a default image to use in case no image was found. You can also set the plugin to always use the default image regardless of any available images.
+
 = Open Graph =
 
 Since version 2.0.5 the plugin also has the option to automatically create Open Graph tags on your Wordpress site. These will tell Facebook for example which image to display when sharing a page.
@@ -154,9 +159,13 @@ Upload the Social Sharing Toolkit plugin to the `/wp-content/plugins/` folder on
 
 1. Plugin configuration: General settings
 2. Plugin configuration: Content, Shortcode and Share Widget have the same options 
-3. Advanced settings with bitly and Open Graph
+3. Advanced settings with bitly, Pinterest and Open Graph options
 
 == Upgrade Notice ==
+
+= 2.0.7 =
+
+Please update to version 2.0.7 for several critical fixes and enhancements to the Pinterest buttons.
 
 = 2.0.6 =
 
@@ -202,6 +211,10 @@ New widget included in version 1.2.0.
 Please update to version 1.0.1 to prevent an unexpected printing of the page title.
 
 == Changelog ==
+
+= 2.0.7 =
+* Included an option to specify a default image for the Pinterest button
+* Fixed some major issues with shortcodes and excerpts
 
 = 2.0.6 = 
 * Fixed buttons not appearing on pages

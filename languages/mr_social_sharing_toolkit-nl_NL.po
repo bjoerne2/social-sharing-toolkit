@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2012-04-07 17:37+0100\n"
+"PO-Revision-Date: 2012-04-09 21:31+0100\n"
 "Last-Translator: Marijn Rongen <m.rongen@active-bits.nl>\n"
 "Language-Team: Dutch <LL@li.org>\n"
 
@@ -185,6 +185,12 @@ msgstr "Open Graph inschakelen"
 
 msgid "Default image URL"
 msgstr "Standaard afbeelding URL"
+
+msgid "You can specify a link to an image you would like to use for Pinterest pins when no image is available"
+msgstr "U kunt een link naar een afbeelding invullen die u wilt gebruiken voor Pinterest pins indien geen afbeelding is gevonden"
+
+msgid "Check this box to always display the default image with your Pins"
+msgstr "Vink deze knop aan om altijd de standaard afbeelding to tonen bij uw Pins"
 
 msgid "You can specify a link to an image you would like to include in your likes and shares"
 msgstr "U kunt een link naar een afbeelding invullen die u wilt gebruiken voor gedeelde inhoud"

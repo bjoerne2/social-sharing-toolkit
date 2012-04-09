@@ -3,7 +3,7 @@
 Plugin Name: Social Sharing Toolkit
 Plugin URI: http://www.active-bits.nl/support/social-sharing-toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 2.0.6
+Version: 2.0.7
 Author: Marijn Rongen
 Author URI: http://www.active-bits.nl
 */
@@ -89,9 +89,10 @@ class MR_Social_Sharing_Toolkit {
 			$followers[$key] = array('enable' => 0, 'type' => $val['types'][0], 'id' => '');
 			$follow_order[] = $key;
 		}
+		$pinterest_options = array('default_image' => '', 'fixed_image' => 0);
 		$bitly_options = array('enable' => 0, 'username' => '', 'key' => '');
 		$opengraph_options = array('enable' => 0, 'default_image' => '', 'fixed_image' => 0);
-		$this->options = array('mr_social_sharing_buttons' => $buttons, 'mr_social_sharing_shortcode_buttons' => $shortcodes, 'mr_social_sharing_widget_buttons' => $widgets, 'mr_social_sharing_follow_buttons' => $followers, 'mr_social_sharing_display' => 'span', 'mr_social_sharing_shortcode_display' => 'span', 'mr_social_sharing_widget_display' => 'span', 'mr_social_sharing_follow_display' => 'span', 'mr_social_sharing_align' => '', 'mr_social_sharing_shortcode_align' => '', 'mr_social_sharing_widget_align' => '', 'mr_social_sharing_follow_align' => '', 'mr_social_sharing_position' => 'none', 'mr_social_sharing_types' => array('post', 'page'), 'mr_social_sharing_enable_shortcode' => 1, 'mr_social_sharing_include_excerpts' => 1, 'mr_social_sharing_button_order' => $button_order, 'mr_social_sharing_shortcode_button_order' => $shortcode_order, 'mr_social_sharing_widget_button_order' => $widget_order, 'mr_social_sharing_follow_button_order' => $follow_order, 'mr_social_sharing_linkify_content' => 0, 'mr_social_sharing_linkify_comments' => 0, 'mr_social_sharing_linkify_new' => 1, 'mr_social_sharing_twitter_handles' => 0, 'mr_social_sharing_twitter_hashtags' => 0, 'mr_social_sharing_js_footer' => 1, 'mr_social_sharing_no_follow' => 0, 'mr_social_sharing_bitly' => $bitly_options, 'mr_social_sharing_opengraph' => $opengraph_options);
+		$this->options = array('mr_social_sharing_buttons' => $buttons, 'mr_social_sharing_shortcode_buttons' => $shortcodes, 'mr_social_sharing_widget_buttons' => $widgets, 'mr_social_sharing_follow_buttons' => $followers, 'mr_social_sharing_display' => 'span', 'mr_social_sharing_shortcode_display' => 'span', 'mr_social_sharing_widget_display' => 'span', 'mr_social_sharing_follow_display' => 'span', 'mr_social_sharing_align' => '', 'mr_social_sharing_shortcode_align' => '', 'mr_social_sharing_widget_align' => '', 'mr_social_sharing_follow_align' => '', 'mr_social_sharing_position' => 'none', 'mr_social_sharing_types' => array('post', 'page'), 'mr_social_sharing_enable_shortcode' => 1, 'mr_social_sharing_include_excerpts' => 1, 'mr_social_sharing_button_order' => $button_order, 'mr_social_sharing_shortcode_button_order' => $shortcode_order, 'mr_social_sharing_widget_button_order' => $widget_order, 'mr_social_sharing_follow_button_order' => $follow_order, 'mr_social_sharing_linkify_content' => 0, 'mr_social_sharing_linkify_comments' => 0, 'mr_social_sharing_linkify_new' => 1, 'mr_social_sharing_twitter_handles' => 0, 'mr_social_sharing_twitter_hashtags' => 0, 'mr_social_sharing_js_footer' => 1, 'mr_social_sharing_no_follow' => 0, 'mr_social_sharing_pinterest' => $pinterest_options, 'mr_social_sharing_bitly' => $bitly_options, 'mr_social_sharing_opengraph' => $opengraph_options);
 		foreach ($this->options as $key => $val) {
 			$this->options[$key] = get_option( $key, $val );
 		}
@@ -322,6 +323,14 @@ class MR_Social_Sharing_Toolkit {
 						<input type="text" name="mr_social_sharing_bitly[username]" id="mr_social_sharing_bitly_username" value="'.$this->options['mr_social_sharing_bitly']['username'].'"/></br/>
 						<label for="mr_social_sharing_bitly_key">'.__('Your bitly API Key','mr_social_sharing_toolkit').'</label>
 						<input type="text" name="mr_social_sharing_bitly[key]" id="mr_social_sharing_bitly_key" value="'.$this->options['mr_social_sharing_bitly']['key'].'"/>
+						<h4>'.__('Pinterest','mr_social_sharing_toolkit').'</h4>
+						<label for="mr_social_sharing_pinterest_default_image">'.__('Default image URL','mr_social_sharing_toolkit').'</label>
+						<input type="text" name="mr_social_sharing_pinterest[default_image]" id="mr_social_sharing_pinterest_default_image" value="'.$this->options['mr_social_sharing_pinterest']['default_image'].'"/></br/>
+						<p><span class="description">'.__('You can specify a link to an image you would like to use for Pinterest pins when no image is available','mr_social_sharing_toolkit').'</span></p>
+						<label for="mr_social_sharing_pinterest_fixed_image" class="check"><input type="checkbox" name="mr_social_sharing_pinterest[fixed_image]" id="mr_social_sharing_pinterest_fixed_image"';
+		if ($this->options['mr_social_sharing_pinterest']['fixed_image'] == 1) { echo ' checked="checked"';}
+		echo ' value="1" /> '.__("Always use the default image", 'mr_social_sharing_toolkit').'</label><br/>
+						<p><span class="description">'.__("Check this box to always display the default image with your Pins", 'mr_social_sharing_toolkit').'</span></p>
 						<h4>'.__('OpenGraph','mr_social_sharing_toolkit').'</h4>
 						<p>'.__('Include Open Graph tags','mr_social_sharing_toolkit').'</p>
 						<label for="mr_social_sharing_opengraph_enable" class="check"><input type="checkbox" name="mr_social_sharing_opengraph[enable]" id="mr_social_sharing_opengraph_enable"';
@@ -333,7 +342,7 @@ class MR_Social_Sharing_Toolkit {
 						<label for="mr_social_sharing_opengraph_fixed_image" class="check"><input type="checkbox" name="mr_social_sharing_opengraph[fixed_image]" id="mr_social_sharing_opengraph_fixed_image"';
 		if ($this->options['mr_social_sharing_opengraph']['fixed_image'] == 1) { echo ' checked="checked"';}
 		echo ' value="1" /> '.__("Always use the default image", 'mr_social_sharing_toolkit').'</label><br/>
-						<p><span class="description">'.__("Check this box to always display the default image woth you shared content", 'mr_social_sharing_toolkit').'</span></p>						
+						<p><span class="description">'.__("Check this box to always display the default image with your shared content", 'mr_social_sharing_toolkit').'</span></p>						
 					</div>
 				</div>
 					<p class="submit">
@@ -468,7 +477,7 @@ class MR_Social_Sharing_Toolkit {
 	/* Output functions */
 	
 	function print_opengraph() {
-		echo '<!-- Open Graph tags provided by Social Sharing Toolkit v2.0.6 -->
+		echo '<!-- Open Graph tags provided by Social Sharing Toolkit v2.0.7 -->
 		<meta property="og:locale" content="'.str_replace('-', '_', get_bloginfo('language')).'"/>';
 		if (is_single() || is_page()) {
 			$excerpt = get_the_excerpt();
@@ -739,8 +748,8 @@ class MR_Social_Sharing_Toolkit {
 			$url = 'http://'.$_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];	
 		}
 		$bookmarks = '
-				<!-- Social Sharing Toolkit v2.0.6 | http://www.active-bits.nl/support/social-sharing-toolkit/ -->
-				<div class="mr_social_sharing_wrapper">';
+				<div class="mr_social_sharing_wrapper">
+				<!-- Social Sharing Toolkit v2.0.7 | http://www.active-bits.nl/support/social-sharing-toolkit/ -->';
 		foreach ($this->options['mr_social_sharing_'.$type.'button_order'] as $button) {
 			if ($this->options['mr_social_sharing_'.$type.'buttons'][$button]['enable'] == 1) {
 				$id = array_key_exists('id', $this->options['mr_social_sharing_'.$type.'buttons'][$button]) ? $this->options['mr_social_sharing_'.$type.'buttons'][$button]['id'] : '';
@@ -755,8 +764,8 @@ class MR_Social_Sharing_Toolkit {
 	
 	function create_followers() {
 		$followers = '
-				<!-- Social Sharing Toolkit v2.0.6 | http://www.active-bits.nl/support/social-sharing-toolkit/ -->
-				<div class="mr_social_sharing_wrapper">';
+				<div class="mr_social_sharing_wrapper">
+				<!-- Social Sharing Toolkit v2.0.7 | http://www.active-bits.nl/support/social-sharing-toolkit/ -->';
 		foreach ($this->options['mr_social_sharing_follow_button_order'] as $button) {
 			if ($this->options['mr_social_sharing_follow_buttons'][$button]['enable'] == 1) {
 				$id = array_key_exists('id', $this->options['mr_social_sharing_follow_buttons'][$button]) ? $this->options['mr_social_sharing_follow_buttons'][$button]['id'] : '';
@@ -1372,33 +1381,40 @@ class MR_Social_Sharing_Toolkit {
 	
 	function share($content) {
 		$media = '';
-		if (current_theme_supports('post-thumbnails')) {
-			if ($media = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()))) {
-	  			if (is_array($media)) {
-	  				$media = $media[0];
-	  			} else {
-	  				$media = '';	
-	  			}
+		if ($this->options['mr_social_sharing_pinterest']['default_image'] != '' && $this->options['mr_social_sharing_pinterest']['fixed_image'] == 1) {
+			$media = $this->options['mr_social_sharing_pinterest']['default_image'];
+		} else {
+			if (current_theme_supports('post-thumbnails')) {
+				if ($media = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()))) {
+		  			if (is_array($media)) {
+		  				$media = $media[0];
+		  			} else {
+		  				$media = '';	
+		  			}
+				}
+			} 
+			if ($media == '') {
+				$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
+	  			$img = $matches[1][0];
+				if($img != '') {
+	    			$media = $img;
+	  			}	
 			}
-		} 
-		if ($media == '') {
-			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-  			$img = $matches[1][0];
-			if($img != '') {
-    			$media = $img;
-  			}	
+			if ($media == '' && $this->options['mr_social_sharing_pinterest']['default_image'] != '') {
+				$media = $this->options['mr_social_sharing_pinterest']['default_image'];
+			}
 		}
 		$type = get_post_type();
-		if (in_array($type, $this->options['mr_social_sharing_types']) && (is_single() || $type == 'page')) {
+		if (in_array($type, $this->options['mr_social_sharing_types']) && ((is_single() || $this->options['mr_social_sharing_include_excerpts'] == 1) || $type == 'page')) {
 			if ($this->options['mr_social_sharing_position'] == 'top') {
 				$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false), '', $media);
 				$content = $bookmarks.$content;	
 			}
-			if ($this->options['mr_social_sharing_position'] == 'bottom' && (is_single() || $type == 'page')) {
+			if ($this->options['mr_social_sharing_position'] == 'bottom') {
 				$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false), '', $media);
 				$content .= $bookmarks;
 			}
-			if ($this->options['mr_social_sharing_position'] == 'both' && (is_single() || $type == 'page')) {
+			if ($this->options['mr_social_sharing_position'] == 'both') {
 				$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false), '', $media);
 				$content = $bookmarks.$content.$bookmarks;
 			}
@@ -1408,21 +1424,28 @@ class MR_Social_Sharing_Toolkit {
 		
 	function share_more_link($link) {
 		$media = '';
-		if (current_theme_supports('post-thumbnails')) {
-			if ($media = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()))) {
-	  			if (is_array($media)) {
-	  				$media = $media[0];
-	  			} else {
-	  				$media = '';	
-	  			}
+		if ($this->options['mr_social_sharing_pinterest']['default_image'] != '' && $this->options['mr_social_sharing_pinterest']['fixed_image'] == 1) {
+			$media = $this->options['mr_social_sharing_pinterest']['default_image'];
+		} else {
+			if (current_theme_supports('post-thumbnails')) {
+				if ($media = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()))) {
+		  			if (is_array($media)) {
+		  				$media = $media[0];
+		  			} else {
+		  				$media = '';	
+		  			}
+				}
+			}		
+			if ($media == '') {
+				$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches);
+	  			$img = $matches[1][0];
+				if($img != '') {
+	    			$media = $img;
+	  			}	
 			}
-		}		
-		if ($media == '') {
-			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches);
-  			$img = $matches[1][0];
-			if($img != '') {
-    			$media = $img;
-  			}	
+			if ($media == '' && $this->options['mr_social_sharing_pinterest']['default_image'] != '') {
+				$media = $this->options['mr_social_sharing_pinterest']['default_image'];
+			}
 		}
 		$type = get_post_type();
 		if (in_array($type, $this->options['mr_social_sharing_types'])) {
@@ -1436,21 +1459,28 @@ class MR_Social_Sharing_Toolkit {
 	
 	function share_excerpt($content) {
 		$media = '';
-		if (current_theme_supports('post-thumbnails')) {
-			if ($media = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()))) {
-	  			if (is_array($media)) {
-	  				$media = $media[0];
-	  			} else {
-	  				$media = '';	
-	  			}
+		if ($this->options['mr_social_sharing_pinterest']['default_image'] != '' && $this->options['mr_social_sharing_pinterest']['fixed_image'] == 1) {
+			$media = $this->options['mr_social_sharing_pinterest']['default_image'];
+		} else {
+			if (current_theme_supports('post-thumbnails')) {
+				if ($media = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()))) {
+		  			if (is_array($media)) {
+		  				$media = $media[0];
+		  			} else {
+		  				$media = '';	
+		  			}
+				}
+			}		
+			if ($media == '') {
+				$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
+	  			$img = $matches[1][0];
+				if($img != '') {
+	    			$media = $img;
+	  			}	
 			}
-		}		
-		if ($media == '') {
-			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-  			$img = $matches[1][0];
-			if($img != '') {
-    			$media = $img;
-  			}	
+			if ($media == '' && $this->options['mr_social_sharing_pinterest']['default_image'] != '') {
+				$media = $this->options['mr_social_sharing_pinterest']['default_image'];
+			}
 		}
 		$type = get_post_type();
 		if (in_array($type, $this->options['mr_social_sharing_types'])) {
@@ -1479,24 +1509,32 @@ class MR_Social_Sharing_Toolkit {
 	
 	function share_shortcode() {
 		$media = '';
-		if (current_theme_supports('post-thumbnails')) {
-			if ($media = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()))) {
-	  			if (is_array($media)) {
-	  				$media = $media[0];
-	  			} else {
-	  				$media = '';	
-	  			}
+		if ($this->options['mr_social_sharing_pinterest']['default_image'] != '' && $this->options['mr_social_sharing_pinterest']['fixed_image'] == 1) {
+			$media = $this->options['mr_social_sharing_pinterest']['default_image'];
+		} else {
+			if (current_theme_supports('post-thumbnails')) {
+				if ($media = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()))) {
+		  			if (is_array($media)) {
+		  				$media = $media[0];
+		  			} else {
+		  				$media = '';	
+		  			}
+				}
+			}		
+			if ($media == '') {
+				$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches);
+	  			$img = $matches[1][0];
+				if($img != '') {
+	    			$media = $img;
+	  			}	
 			}
-		}		
-		if ($media == '') {
-			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', the_content(), $matches);
-  			$img = $matches[1][0];
-			if($img != '') {
-    			$media = $img;
-  			}	
+			if ($media == '' && $this->options['mr_social_sharing_pinterest']['default_image'] != '') {
+				$media = $this->options['mr_social_sharing_pinterest']['default_image'];
+			}
 		}
+		$type = get_post_type();
 		$bookmarks = '';
-		if ($this->options['mr_social_sharing_enable_shortcode'] == 1 && (is_single() || $this->options['mr_social_sharing_include_excerpts'] == 1)) {
+		if ($this->options['mr_social_sharing_enable_shortcode'] == 1 && ((is_single() || $type == 'page') || $this->options['mr_social_sharing_include_excerpts'] == 1)) {
 			$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false), 'shortcode_', $media);
 		}
 		return $bookmarks;
@@ -1549,21 +1587,28 @@ class MR_Social_Sharing_Toolkit_Widget extends WP_Widget {
 		$url = empty($instance['fixed_url']) ? '' : $instance['fixed_url'];
 		$title = empty($instance['fixed_title']) ? wp_title('', false) : $instance['fixed_title'];
 		$media = '';
-		if (current_theme_supports('post-thumbnails')) {
-			if ($media = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()))) {
-	  			if (is_array($media)) {
-	  				$media = $media[0];
-	  			} else {
-	  				$media = '';	
-	  			}
+		if ($this->options['mr_social_sharing_pinterest']['default_image'] != '' && $this->options['mr_social_sharing_pinterest']['fixed_image'] == 1) {
+			$media = $this->options['mr_social_sharing_pinterest']['default_image'];
+		} else {
+			if (current_theme_supports('post-thumbnails')) {
+				if ($media = wp_get_attachment_image_src(get_post_thumbnail_id(get_the_ID()))) {
+		  			if (is_array($media)) {
+		  				$media = $media[0];
+		  			} else {
+		  				$media = '';	
+		  			}
+				}
+			}		
+			if ($media == '') {
+				$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches);
+	  			$img = $matches[1][0];
+				if($img != '') {
+	    			$media = $img;
+	  			}	
 			}
-		}		
-		if ($media == '') {
-			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', get_the_content(), $matches);
-  			$img = $matches[1][0];
-			if($img != '') {
-    			$media = $img;
-  			}	
+			if ($media == '' && $this->options['mr_social_sharing_pinterest']['default_image'] != '') {
+				$media = $this->options['mr_social_sharing_pinterest']['default_image'];
+			}
 		}
 		$bookmarks = $MR_Social_Sharing_Toolkit->create_bookmarks($url, $title, 'widget_', $media);	
 		echo $before_widget;
