@@ -10,4 +10,6 @@ jQuery(document).ready(function($) {
 			}
     	});
     });
+    // Don't share links
+	$(".mr_social_sharing_wrapper a").attr("rel", "nofollow");
 });

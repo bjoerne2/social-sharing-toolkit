@@ -1,23 +1,25 @@
 === Social Sharing Toolkit ===
 Contributors: MarijnRongen
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=P8ZVNC57E58FE&lc=NL&item_name=WordPress%20plugins%20by%20Marijn%20Rongen&item_number=Social%20Sharing%20Toolkit&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
-Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Google+, Twitter, Tweet, Follow, StumbleUpon, Stumble, Tumblr, Delicious, Digg, Reddit, Myspace, Hyves, YouTube, Flickr, Picasa, deaviantART, mail, RSS, feed, connect, recommend, social, sharing, widget, shortcode, page, post, button, counter, icon
+Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Pinterest, Google+, Twitter, Tweet, Buffer, Follow, StumbleUpon, Stumble, Tumblr, Delicious, Digg, Reddit, Myspace, Hyves, YouTube, Flickr, 500px, Picasa, deaviantART, mail, RSS, feed, connect, recommend, social, sharing, widget, shortcode, page, post, button, counter, icon, bitly, Open Graph
 Requires at least: 3.0
-Tested up to: 3.2.1
-Stable tag: 2.0.4
+Tested up to: 3.3.1
+Stable tag: 2.0.7
 License: GPLv2 or later
 
 Easy sharing and connecting on social networks. Display on posts or use widgets or shortcode. Also Twitter name/hashtag to link converter.
 
 == Description ==
 
-= Sharing posts & pages =
+= Sharing content =
 
-The plugin currently supports the following networks for sharing:
+The plugin currently supports the following networks for sharing your content:
 
-* Facebook (like and send buttons)
+* Facebook (like, share and send buttons)
 * Twitter
+* Buffer
 * Google +1
+* Pinterest
 * LinkedIn
 * Tumblr
 * StumbleUpon
@@ -27,7 +29,7 @@ The plugin currently supports the following networks for sharing:
 * Myspace
 * Hyves
 
-On Tweet buttons you can specify a Twitter handle which is then appended to the tweet a visitor sends (like "... via @WordPress"). An email send button is also included.
+On Tweet and Buffer buttons you can specify a Twitter handle which is then appended to the tweet a visitor sends (like "... via @WordPress"). An email send button is also included.
 
 You can decide which networks to support on your blog, where the buttons will appear (either above or below the content). Through drag and drop you can easily change the order in which the buttons appear. 
 
@@ -53,7 +55,7 @@ In version 2.0.4 three dividers were added to each list. These might be useful i
 
 = Shortcode =
 
-It is also possible to only let the buttons appear where you want by using shortcode. The shortcode function has it's own list of buttons with the same possibilities as the list for posts & pages. Use the shortcode [social_share/] in the content where you would like to display the buttons.
+It is also possible to only let the buttons appear where you want by using shortcode. The shortcode function has it's own list of buttons with the same possibilities as the list for content. Use the shortcode [social_share/] in the content where you would like to display the buttons.
 
 = Widget =
 
@@ -68,12 +70,14 @@ The networks currently supported for the Follow Widget are:
 * Facebook
 * Twitter
 * Google+
-* LinkedIn
+* Pinterest
+* LinkedIn (including company and group links)
 * Tumblr
 * Myspace
 * Hyves
 * YouTube
 * Flickr
+* 500px
 * Picasa
 * DeviantArt
 * Last.fm
@@ -87,12 +91,26 @@ A button for an RSS feed is also included. Of course the type, order and orienta
 * medium icon with text
 * large icon
 
-To use a button you must enter your user id or username for the network. To use the RSS feed button you must enter the full url. 
+To use a button you must enter your user / profile id or username for the network. To use the RSS feed button you must enter the full url. 
 
 = Automatic Twitter links =
 
 This plugin also includes a configurable & improved version of my earlier Automatic Twitter Links plugin. You can decide if you want to convert Twitter names and/or hashtags to links. 
 Twitter names will link to their Twitter profile and hashtags will link to the Twitter search page.
+
+= Bitly =
+
+Since version 2.0.5 the plugin has the option to use bitly to shorten the urls for the tweet button. To use it you need to register with bitly and fill in your bitly username and API key.
+
+= Pinterest =
+
+Since version 2.0.5 the plugin has the option to show Pinterest buttons. The plugin tries to find the featured image or first image in the content if available. If no image is available the button is omitted. 
+Since version 2.0.7 is is possible to enter the URL of a default image to use in case no image was found. You can also set the plugin to always use the default image regardless of any available images.
+
+= Open Graph =
+
+Since version 2.0.5 the plugin also has the option to automatically create Open Graph tags on your Wordpress site. These will tell Facebook for example which image to display when sharing a page.
+You can enter the URL of a default image to use in case no image was found. The plugin will try to use the thumbnail attached to the post (if your theme supports it), or the first image it finds in the content. To turn of this behavior you can check a box which will force the plugin to always use the default image you have specified.
 
 == Frequently Asked Questions ==
 
@@ -140,13 +158,22 @@ Upload the Social Sharing Toolkit plugin to the `/wp-content/plugins/` folder on
 == Screenshots ==
 
 1. Plugin configuration: General settings
-2. Plugin configuration: Posts and pages, Shortcode and Share Widget have the same options 
-3. Buttons generated by the configuration in screenshot 2
-4. Plugin configuration: Follow Widget
-5. Example of buttons generated by Follow Widget
-6. Plugin configuration: Automatic Twitter links
+2. Plugin configuration: Content, Shortcode and Share Widget have the same options 
+3. Advanced settings with bitly, Pinterest and Open Graph options
 
 == Upgrade Notice ==
+
+= 2.0.7 =
+
+Please update to version 2.0.7 for several critical fixes and enhancements to the Pinterest buttons.
+
+= 2.0.6 =
+
+Please update to version 2.0.6 for several small bug fixes and enhancements.
+
+= 2.0.5 =
+
+Please update to version 2.0.5 for improved script handling, added buttons, bug fixes and integration of Bit.ly url shortening and Open Graph tags. Custom post types are now supported.
 
 = 2.0.4 =
 
@@ -184,6 +211,29 @@ New widget included in version 1.2.0.
 Please update to version 1.0.1 to prevent an unexpected printing of the page title.
 
 == Changelog ==
+
+= 2.0.7 =
+* Included an option to specify a default image for the Pinterest button
+* Fixed some major issues with shortcodes and excerpts
+
+= 2.0.6 = 
+* Fixed buttons not appearing on pages
+* Fixed Pinterest issue
+
+= 2.0.5 =
+* Improved JavaScript handling
+* Integrated Open Graph tag generator
+* Integrated Bit.ly url shortening for Tweet buttons
+* Fixed Automatic Twitter Links bugs
+* Improved display of buttons in excerpts
+* Plugin now supports custom post types
+* Included Pinterest buttons
+* Included Buffer buttons
+* Included Xing buttons
+* Slightly improved admin screens
+* Buttons are excluded from feeds
+* Updated StumbleUpon icons
+* added rel="nofollow" option for outbound links
 
 = 2.0.4 =
 * Redesigned email button
