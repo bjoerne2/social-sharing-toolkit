@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=P8ZVN
 Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Pinterest, Google+, Twitter, Tweet, Buffer, Follow, StumbleUpon, Stumble, Tumblr, Delicious, Digg, Reddit, Myspace, Hyves, YouTube, Flickr, 500px, Picasa, deaviantART, mail, RSS, feed, connect, recommend, social, sharing, widget, shortcode, page, post, button, counter, icon, bitly, Open Graph
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 2.0.7
+Stable tag: 2.0.8
 License: GPLv2 or later
 
 Easy sharing and connecting on social networks. Display on posts or use widgets or shortcode. Also Twitter name/hashtag to link converter.
@@ -163,6 +163,10 @@ Upload the Social Sharing Toolkit plugin to the `/wp-content/plugins/` folder on
 
 == Upgrade Notice ==
 
+= 2.0.8 =
+
+Please update to version 2.0.8 for a critical fix causing server errors.
+
 = 2.0.7 =
 
 Please update to version 2.0.7 for several critical fixes and enhancements to the Pinterest buttons.
@@ -211,6 +215,12 @@ New widget included in version 1.2.0.
 Please update to version 1.0.1 to prevent an unexpected printing of the page title.
 
 == Changelog ==
+
+= 2.0.8 =
+* Fixed issue with combinations of excerpt and Read more tags resulting in errors
+* Fixed a bug with urls and StumbleUpon counters
+* Fixed issue with Bitly for high traffic sites
+* Updated Pinterest buttons and icons
 
 = 2.0.7 =
 * Included an option to specify a default image for the Pinterest button

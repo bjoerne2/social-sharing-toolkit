@@ -8,6 +8,9 @@ a.mr_social_sharing_popup_link, a.mr_social_sharing_popup_link:HOVER {display: i
 .mr_social_sharing_top a.mr_social_sharing_popup_link, .mr_social_sharing_top div, .mr_social_sharing_top span, .mr_social_sharing_top iframe, .mr_social_sharing_top img {line-height: 0; vertical-align: top;}
 .mr_social_sharing span.mr_small_icon, .mr_social_sharing span.mr_medium_icon, .mr_social_sharing_top span.mr_small_icon, .mr_social_sharing_top span.mr_medium_icon {display: inline-block; font-family: 'Droid Sans',arial,sans-serif; vertical-align: bottom; font-size:10px; font-weight: 200; line-height: 10px; margin: 0 0 0 4px; padding: 0;}
 .mr_social_sharing span.mr_medium_icon, .mr_social_sharing_top span.mr_medium_icon {font-size:12px; line-height: 12px;}
+/* Stumble Upon fix */
+.mr_social_sharing span.stumble_vertical iframe, .mr_social_sharing_top span.stumble_vertical iframe {width: 50px;}
+.mr_social_sharing span.stumble_horizontal iframe, .mr_social_sharing_top span.stumble_horizontal iframe {width: 74px;}
 /* Digg fix */
 span.db-count {line-height: 16px; vertical-align: baseline;}
 /* LinkedIn fix */
