@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=P8ZVN
 Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Pinterest, Google+, Twitter, Tweet, Buffer, Follow, StumbleUpon, Stumble, Tumblr, Delicious, Digg, Reddit, Myspace, Hyves, YouTube, Flickr, 500px, Picasa, deaviantART, mail, RSS, feed, connect, recommend, social, sharing, widget, shortcode, page, post, button, counter, icon, bitly, Open Graph
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 2.0.8
+Stable tag: 2.0.9
 License: GPLv2 or later
 
 Easy sharing and connecting on social networks. Display on posts or use widgets or shortcode. Also Twitter name/hashtag to link converter.
@@ -71,6 +71,7 @@ The networks currently supported for the Follow Widget are:
 * Twitter
 * Google+
 * Pinterest
+* Goodreads
 * LinkedIn (including company and group links)
 * Tumblr
 * Myspace
@@ -82,6 +83,7 @@ The networks currently supported for the Follow Widget are:
 * DeviantArt
 * Last.fm
 * Spotify
+* Soundcloud
 
 A button for an RSS feed is also included. Of course the type, order and orientation of the buttons is also configurable for the Follow Widget. Each button for the Follow Widget supports the following types:
 
@@ -163,6 +165,10 @@ Upload the Social Sharing Toolkit plugin to the `/wp-content/plugins/` folder on
 
 == Upgrade Notice ==
 
+= 2.0.9 =
+
+Please update to version 2.0.9 for several fixes, more features and extra networks.
+
 = 2.0.8 =
 
 Please update to version 2.0.8 for a critical fix causing server errors.
@@ -215,6 +221,17 @@ New widget included in version 1.2.0.
 Please update to version 1.0.1 to prevent an unexpected printing of the page title.
 
 == Changelog ==
+
+= 2.0.9 =
+* Added the possibility to use custom text and images for (most) buttons
+* Added possibility to create custom css within the plugin
+* Improved feed detection to prevent buttons and text appearing in feeds
+* Fixed some W3C validation issues
+* Added Soundcloud buttons
+* Added Goodreads buttons
+* Added Flattr buttons
+* Fixed possible safety issue with Javascript call for +1
+* Added icons to +1 button choices
 
 = 2.0.8 =
 * Fixed issue with combinations of excerpt and Read more tags resulting in errors
