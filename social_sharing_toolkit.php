@@ -649,7 +649,6 @@ class MR_Social_Sharing_Toolkit {
 		$bookmarks .= '</div>';
 		$bookmarks = str_replace('<div class="mr_social_sharing_wrapper"></div>', '', $bookmarks);
 		$this->count++;
-		echo 'bookmarks';
 		return $bookmarks;	
 	}
 	
@@ -667,7 +666,6 @@ class MR_Social_Sharing_Toolkit {
 		}		
 		$followers .= '</div>';
 		$followers = str_replace('<div class="mr_social_sharing_wrapper"></div>', '', $followers);
-		echo 'follow';
 		return $followers;
 	}
 	
