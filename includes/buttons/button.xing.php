@@ -12,7 +12,7 @@ class MR_Social_Sharing_Toolkit_Xing extends MR_Social_Sharing_Toolkit_Button {
 			case 'horizontal':
 				$retval = '<script type="XING/Share" data-counter="right" data-lang="en" data-url="'.$url.'"></script>';				
 				$footer = (get_option('mr_social_sharing_js_footer') == 1) ? true : false;
-				$this->enqueue_script('Social_sharing_xing', 'https://www.xing-share.com/js/external/share.js', $footer);
+				$this->enqueue_script('Social_sharing_xing', 'https://www.xing-share.com/js/external/share.js', false);
 				break;
 			case 'vertical':
 				$retval = '<script type="XING/Share" data-counter="top" data-lang="en" data-url="'.$url.'"></script>';			
@@ -36,7 +36,8 @@ class MR_Social_Sharing_Toolkit_Xing extends MR_Social_Sharing_Toolkit_Button {
 	function follow_xing($type, $id, $text = '', $icon = '') {
 		$url = 'http://www.xing.com/profile/'.$id;
 		$text = ($text == '') ? __('Join my network on','mr_social_sharing_toolkit').' Xing' : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

@@ -9,7 +9,8 @@ class MR_Social_Sharing_Toolkit_Flickr extends MR_Social_Sharing_Toolkit_Button 
 	function follow_flickr($type, $id, $text = '', $icon = '') {
 		$url = 'http://www.flickr.com/photos/'.$id;
 		$text = ($text == '') ? __('My photostream on','mr_social_sharing_toolkit').' Flickr' : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

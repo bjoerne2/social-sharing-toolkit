@@ -9,7 +9,8 @@ class MR_Social_Sharing_Toolkit_Youtube extends MR_Social_Sharing_Toolkit_Button
 	function follow_youtube($type, $id, $text = '', $icon = '') {
 		$url = 'http://www.youtube.com/user/'.$id;
 		$text = ($text == '') ? __('Watch me on','mr_social_sharing_toolkit').' YouTube' : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

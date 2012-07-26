@@ -15,7 +15,8 @@ class MR_Social_Sharing_Toolkit_Hyves extends MR_Social_Sharing_Toolkit_Button {
 	function follow_hyves($type, $id, $text = '', $icon = '') {
 		$url = 'http://'.$id.'.hyves.nl';
 		$text = ($text == '') ? __('Friend me on','mr_social_sharing_toolkit').' Hyves' : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

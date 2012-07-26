@@ -9,7 +9,8 @@ class MR_Social_Sharing_Toolkit_500px extends MR_Social_Sharing_Toolkit_Button {
 	function follow_500px($type, $id, $text = '', $icon = '') {
 		$url = 'http://500px.com/'.$id;
 		$text = ($text == '') ? __('My portfolio on','mr_social_sharing_toolkit').' 500px' : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

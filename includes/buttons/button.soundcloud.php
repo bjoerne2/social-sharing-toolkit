@@ -9,7 +9,8 @@ class MR_Social_Sharing_Toolkit_Soundcloud extends MR_Social_Sharing_Toolkit_But
 	function follow_soundcloud($type, $id, $text = '', $icon = '') {
 		$url = 'http://soundcloud.com/'.$id;
 		$text = ($text == '') ? __('My sounds on','mr_social_sharing_toolkit').' Soundcloud' : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

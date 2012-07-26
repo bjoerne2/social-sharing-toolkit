@@ -52,6 +52,18 @@ class MR_Social_Sharing_Toolkit_Twitter extends MR_Social_Sharing_Toolkit_Button
 				$footer = (get_option('mr_social_sharing_js_footer') == 1) ? true : false;
 				$this->enqueue_script('Social_sharing_twitter', 'https://platform.twitter.com/widgets.js', $footer);
 				break;
+			case 'none':
+				$retval = '<a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-url="'.$url.'"';
+				if ($id != '') {
+					$retval .= ' data-via="'.$id.'"';
+				}
+				if ($count_url != '') {
+					$retval .= ' data-counturl="'.$count_url.'"';	
+				}
+				$retval .= ' data-text="'.$title.'">Tweet</a>';
+				$footer = (get_option('mr_social_sharing_js_footer') == 1) ? true : false;
+				$this->enqueue_script('Social_sharing_twitter', 'https://platform.twitter.com/widgets.js', $footer);
+				break;
 			default:
 				$url = 'https://twitter.com/share?url='.urlencode($url).'&amp;text='.urlencode($title);
 				if ($id != '') {
@@ -82,7 +94,8 @@ class MR_Social_Sharing_Toolkit_Twitter extends MR_Social_Sharing_Toolkit_Button
 			default:
 				$url = 'https://twitter.com/'.$id;
 				$text = ($text == '') ? __('Follow me on','mr_social_sharing_toolkit').' Twitter' : $text;
-				$retval = $this->get_icon($type, $url, $text, $icon);
+				$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+				$retval = $this->get_icon($type, $url, $text, $icon, false, $blank);
 				break;	
 		}
 		return $retval;

@@ -9,7 +9,8 @@ class MR_Social_Sharing_Toolkit_Spotify extends MR_Social_Sharing_Toolkit_Button
 	function follow_spotify($type, $id, $text = '', $icon = '') {
 		$url = 'http://open.spotify.com/user/'.$id;
 		$text = ($text == '') ? __('My profile on','mr_social_sharing_toolkit').' Spotify' : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

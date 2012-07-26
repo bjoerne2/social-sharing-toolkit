@@ -16,7 +16,8 @@ class MR_Social_Sharing_Toolkit_Myspace extends MR_Social_Sharing_Toolkit_Button
 	function follow_myspace($type, $id, $text = '', $icon = '') {
 		$url = 'http://www.myspace.com/'.$id;
 		$text = ($text == '') ? __('Friend me on','mr_social_sharing_toolkit').' Myspace' : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

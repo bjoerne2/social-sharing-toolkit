@@ -68,36 +68,35 @@ class MR_Social_Sharing_Toolkit_Facebook extends MR_Social_Sharing_Toolkit_Butto
 		$retval .= ' data-show-faces="false"></div>';
 		$lang = __('en_US','mr_social_sharing_toolkit');
 		$footer = (get_option('mr_social_sharing_js_footer') == 1) ? true : false;
-		$this->enqueue_script('Social_sharing_facebook_root', plugins_url('/button.facebook.js', __FILE__));
+		$this->enqueue_script('Social_sharing_facebook_root', plugins_url('/button.facebook.js', __FILE__), $footer);
 		$this->enqueue_script('Social_sharing_facebook_xfbml', 'http://connect.facebook.net/'.$lang.'/all.js#xfbml=1', $footer);
-		return $retval;
+		return '<span style="display: inline-block; width: '.$width.'px; height: '.$height.'px; overflow: hidden;">'.$retval.'</span>';
 	}
 				
 	function fb_share($url, $title, $type, $id, $media = '', $description = '', $text = '', $icon = '') {	
-		$lang = __('en_US','mr_social_sharing_toolkit');
 		switch ($type) {
 			case 'vertical':
 				$retval = '<fb:share-button type="box_count" href="'.$url.'"></fb:share-button>';
 				//$retval = '<a name="fb_share" type="box_count" share_url="'.$url.'" href="http://www.facebook.com/sharer.php">Share</a>';
-		$this->enqueue_script('Social_sharing_facebook_root', plugins_url('/button.facebook.js', __FILE__));
+				$this->enqueue_script('Social_sharing_facebook_root', plugins_url('/button.facebook.js', __FILE__));
 				$footer = (get_option('mr_social_sharing_js_footer') == 1) ? true : false;
-				$this->enqueue_script('Social_sharing_facebook_xfbml', 'http://connect.facebook.net/'.$lang.'/all.js#xfbml=1', $footer);
+				$this->enqueue_script('Social_sharing_facebook_xfbml', 'http://connect.facebook.net/en_US/all.js#xfbml=1', $footer);
 				//$this->enqueue_script('Social_sharing_facebook_share', 'http://static.ak.fbcdn.net/connect.php/js/FB.Share', $footer);
 				break;
 			case 'horizontal':
 				$retval = '<fb:share-button type="button_count" href="'.$url.'"></fb:share-button>';
 				//$retval = '<a name="fb_share" type="button_count" share_url="'.$url.'" href="http://www.facebook.com/sharer.php">Share</a>';
-		$this->enqueue_script('Social_sharing_facebook_root', plugins_url('/button.facebook.js', __FILE__));
+				$this->enqueue_script('Social_sharing_facebook_root', plugins_url('/button.facebook.js', __FILE__));
 				$footer = (get_option('mr_social_sharing_js_footer') == 1) ? true : false;
-				$this->enqueue_script('Social_sharing_facebook_xfbml', 'http://connect.facebook.net/'.$lang.'/all.js#xfbml=1', $footer);
+				$this->enqueue_script('Social_sharing_facebook_xfbml', 'http://connect.facebook.net/en_US/all.js#xfbml=1', $footer);
 				//$this->enqueue_script('Social_sharing_facebook_share', 'http://static.ak.fbcdn.net/connect.php/js/FB.Share', $footer);
 				break;
 			case 'none':
 				$retval = '<fb:share-button type="button" href="'.$url.'"></fb:share-button>';
 				//$retval = '<a name="fb_share" type="button" share_url="'.$url.'" href="http://www.facebook.com/sharer.php">Share</a>';
-		$this->enqueue_script('Social_sharing_facebook_root', plugins_url('/button.facebook.js', __FILE__));
+				$this->enqueue_script('Social_sharing_facebook_root', plugins_url('/button.facebook.js', __FILE__));
 				$footer = (get_option('mr_social_sharing_js_footer') == 1) ? true : false;
-				$this->enqueue_script('Social_sharing_facebook_xfbml', 'http://connect.facebook.net/'.$lang.'/all.js#xfbml=1', $footer);
+				$this->enqueue_script('Social_sharing_facebook_xfbml', 'http://connect.facebook.net/en_US/all.js#xfbml=1', $footer);
 				//$this->enqueue_script('Social_sharing_facebook_share', 'http://static.ak.fbcdn.net/connect.php/js/FB.Share', $footer);
 				break;
 			default:
@@ -122,7 +121,8 @@ class MR_Social_Sharing_Toolkit_Facebook extends MR_Social_Sharing_Toolkit_Butto
 	function follow_facebook($type, $id, $text = '', $icon = '') {
 		$url = 'http://www.facebook.com/'.$id;
 		$text = ($text == '') ? __('Friend me on','mr_social_sharing_toolkit').' Facebook' : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

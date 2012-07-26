@@ -9,7 +9,8 @@ class MR_Social_Sharing_Toolkit_Picasa extends MR_Social_Sharing_Toolkit_Button 
 	function follow_picasa($type, $id, $text = '', $icon = '') {
 		$url = 'http://picasaweb.google.com/'.$id;
 		$text = ($text == '') ? __('My Picasa Web Albums','mr_social_sharing_toolkit') : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

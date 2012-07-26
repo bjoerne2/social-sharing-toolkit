@@ -3,8 +3,8 @@ Contributors: MarijnRongen
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=P8ZVNC57E58FE&lc=NL&item_name=WordPress%20plugins%20by%20Marijn%20Rongen&item_number=Social%20Sharing%20Toolkit&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Pinterest, Google+, Twitter, Tweet, Buffer, Follow, StumbleUpon, Stumble, Tumblr, Delicious, Digg, Reddit, Myspace, Hyves, YouTube, Flickr, 500px, Picasa, deaviantART, mail, RSS, feed, connect, recommend, social, sharing, widget, shortcode, page, post, button, counter, icon, bitly, Open Graph
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable tag: 2.0.9
+Tested up to: 3.4.1
+Stable tag: 2.1.0
 License: GPLv2 or later
 
 Easy sharing and connecting on social networks. Display on posts or use widgets or shortcode. Also Twitter name/hashtag to link converter.
@@ -80,6 +80,7 @@ The networks currently supported for the Follow Widget are:
 * Flickr
 * 500px
 * Picasa
+* Instagram
 * DeviantArt
 * Last.fm
 * Spotify
@@ -165,6 +166,10 @@ Upload the Social Sharing Toolkit plugin to the `/wp-content/plugins/` folder on
 
 == Upgrade Notice ==
 
+= 2.1.0 =
+
+Please update to version 2.1.0 immediately for several crucial fixes.
+
 = 2.0.9 =
 
 Please update to version 2.0.9 for several fixes, more features and extra networks.
@@ -221,6 +226,15 @@ New widget included in version 1.2.0.
 Please update to version 1.0.1 to prevent an unexpected printing of the page title.
 
 == Changelog ==
+
+= 2.1.0 =
+* Includes a fix for intrusive p-tag inclusion by some themes (thanks to Pia and Patrick for helping to debug this)
+* Replaced the Twitter icons
+* Included link to settings page in Plugins page of WP Admin
+* Added Instagram buttons (using Webstagram)
+* Added possibility to force follow links to open in new window / tab
+* Fixed slight overlap in WP admin when using IE8
+* Removed some redundant functions
 
 = 2.0.9 =
 * Added the possibility to use custom text and images for (most) buttons

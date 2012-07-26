@@ -44,7 +44,7 @@ class MR_Social_Sharing_Toolkit_Buffer extends MR_Social_Sharing_Toolkit_Button 
 				$retval = $this->get_icon($type, $url, $text, $icon, true);
 				break;
 		}		
-		return $retval;
+		return $retval.' <span>'.get_option('mr_social_sharing_js_footer').'</span>';
 	}
 }
 ?>

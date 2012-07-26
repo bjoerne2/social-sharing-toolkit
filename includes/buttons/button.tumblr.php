@@ -16,7 +16,8 @@ class MR_Social_Sharing_Toolkit_Tumblr extends MR_Social_Sharing_Toolkit_Button 
 	function follow_tumblr($type, $id, $text = '', $icon = '') {
 		$url = 'http://'.$id.'.tumblr.com';
 		$text = ($text == '') ? __('Follow me on','mr_social_sharing_toolkit').' Tumblr' : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

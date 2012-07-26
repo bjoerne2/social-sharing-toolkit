@@ -36,7 +36,8 @@ class MR_Social_Sharing_Toolkit_Pinterest extends MR_Social_Sharing_Toolkit_Butt
 	function follow_pinterest($type, $id, $text = '', $icon = '') {
 		$url = 'http://pinterest.com/'.$id.'/';
 		$text = ($text == '') ? __('Follow me on','mr_social_sharing_toolkit').' Pinterest' : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

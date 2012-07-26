@@ -4,12 +4,14 @@ class MR_Social_Sharing_Toolkit_Button {
 	protected $follow_buttons;
 	protected $title;
 	protected $icon;
+	protected $scripts;
 	
 	function MR_Social_Sharing_Toolkit_Button() {
 		$this->share_buttons = array();
 		$this->follow_buttons = array();
 		$this->title = '';
 		$this->icon = '';
+		$this->scripts = array();
 	}
 	
 	function getTitle() {
@@ -80,11 +82,11 @@ class MR_Social_Sharing_Toolkit_Button {
 	}
 	
 	function enqueue_script($name, $src, $footer = false) {
-		if ($footer) {
-			wp_enqueue_script($name, $src, array(), false, true);
-		} else {
-			wp_enqueue_script($name, $src);
-		}
+		$this->scripts[] = array('name' => $name, 'src' => $src, 'in_footer' => $footer);
+	}
+	
+	function get_enqueued_scripts() {
+		return $this->scripts;	
 	}
 }
 ?>

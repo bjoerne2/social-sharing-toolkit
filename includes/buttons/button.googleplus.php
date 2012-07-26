@@ -8,7 +8,6 @@ class MR_Social_Sharing_Toolkit_GooglePlus extends MR_Social_Sharing_Toolkit_But
 	}
 	
 	function gl_plus($url, $title, $type, $id, $media = '', $description = '', $text = '', $icon = '') {
-		$retval = '<g:plusone';
 		switch ($type) {
 			case 'horizontal':
 				$retval = '<div class="g-plusone" data-size="medium" data-href="'.$url.'"></div>';
@@ -37,7 +36,8 @@ class MR_Social_Sharing_Toolkit_GooglePlus extends MR_Social_Sharing_Toolkit_But
 	function follow_plus($type, $id, $text = '', $icon = '') {
 		$url = 'http://plus.google.com/'.$id;
 		$text = ($text == '') ? __('Add me to your circles','mr_social_sharing_toolkit') : $text;
-		return $this->get_icon($type, $url, $text, $icon);
+		$blank = (get_option('mr_social_sharing_follow_new') == 1) ? true : false;
+		return $this->get_icon($type, $url, $text, $icon, false, $blank);
 	}
 }
 ?>

@@ -93,7 +93,7 @@ ul#mr_social_sharing_networks li, ul#mr_social_sharing_shortcode_networks li, ul
 	box-shadow: white 0px 1px 0px 0px inset;
 	cursor: move;
 	display: block;
-	margin: 1px 0 0 0;
+	margin: 3px 0 0 0;
 	outline-color: #222;
 	outline-style: none;
 	outline-width: 0px;
@@ -166,7 +166,7 @@ span.mr_social_sharing_custom {
 	border: 1px solid #DFDFDF;
 	border-radius: 3px;
 	margin: 2px 0;
-	padding: 4px 18px 4px 0;
+	padding: 2px 18px 2px 0;
 }
 
 ul#mr_social_sharing_networks li span.mr_social_sharing_custom input.text {
@@ -175,7 +175,7 @@ ul#mr_social_sharing_networks li span.mr_social_sharing_custom input.text {
 }
 
 ul#mr_social_sharing_networks li span.mr_social_sharing_custom label.text {
-	margin: 0 4px 0 10px;
+	margin: 0 4px 0 8px;
 	padding: 2px 0 0 0;
 }
 

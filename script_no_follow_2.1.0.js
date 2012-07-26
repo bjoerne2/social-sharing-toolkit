@@ -10,6 +10,10 @@ jQuery(document).ready(function($) {
 			}
     	});
     });
+    // Remove pesky <p> tags:
+    $(".mr_social_sharing_wrapper p").each(function(){
+    	$(this).remove();
+	});
     // Don't share links
 	$(".mr_social_sharing_wrapper a").attr("rel", "nofollow");
 });
