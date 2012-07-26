@@ -10,4 +10,8 @@ jQuery(document).ready(function($) {
 			}
     	});
     });
+    // Remove pesky <p> tags:
+    $(".mr_social_sharing_wrapper p").each(function(){
+    	$(this).remove();
+	});
 });

@@ -49,7 +49,7 @@ div.mr_social_sharing_networks {
 	outline-color: #222;
 	outline-style: none;
 	outline-width: 0px;
-	width: 580px;
+	width: 600px;
 	padding: 0 0 10px 0;	
 }
 
@@ -61,6 +61,18 @@ div.mr_social_sharing_networks {
 	display: inline-block;
 	width: 130px;
 	padding: 0 0 0 10px;	
+}
+
+.mr_social_sharing_networks textarea {
+	border-color: #DFDFDF;
+	border-radius: 3px;
+	border-style: solid;
+	border-width: 1px;
+	display: block;
+	padding: 3px 10px 0 10px;
+	margin: 0 10px;
+	width: 580px;
+	height: 400px;	
 }
 
 ul#mr_social_sharing_networks, ul#mr_social_sharing_shortcode_networks, ul#mr_social_sharing_widget_networks, ul#mr_social_sharing_follow_networks {
@@ -76,21 +88,19 @@ ul#mr_social_sharing_networks li, ul#mr_social_sharing_shortcode_networks li, ul
 	background-color: whiteSmoke;
 	background-image: -webkit-linear-gradient(top, #F9F9F9, whiteSmoke);
 	background-origin: padding-box;
-	border-color: #DFDFDF;
+	border: 1px solid #DFDFDF;
 	border-radius: 3px;
-	border-style: solid;
-	border-width: 1px;
 	box-shadow: white 0px 1px 0px 0px inset;
 	cursor: move;
 	display: block;
-	margin: 1px 0 0 0;
+	margin: 3px 0 0 0;
 	outline-color: #222;
 	outline-style: none;
 	outline-width: 0px;
-	padding: 3px 10px 0 10px;
+	padding: 3px 10px;
 	text-shadow: white 0px 1px 0px;
-	width: 520px;
-	height: 24px;
+	width: 558px;
+	height: auto;
 }
 
 ul#mr_social_sharing_networks li img, ul#mr_social_sharing_shortcode_networks li img, ul#mr_social_sharing_widget_networks li img, ul#mr_social_sharing_follow_networks li img {
@@ -120,7 +130,7 @@ ul#mr_social_sharing_networks li input, ul#mr_social_sharing_shortcode_networks 
 ul#mr_social_sharing_networks li input.text, ul#mr_social_sharing_shortcode_networks li input.text, ul#mr_social_sharing_widget_networks li input.text, ul#mr_social_sharing_follow_networks li input.text {
 	display: inline-block;
 	float: right;
-	width: 140px;	
+	width: 160px;	
 	height: 20px;
 	margin: 0 10px 0 0;	
 	padding: 0;
@@ -138,9 +148,35 @@ ul#mr_social_sharing_networks li label.text, ul#mr_social_sharing_shortcode_netw
 ul#mr_social_sharing_networks li select, ul#mr_social_sharing_shortcode_networks li select, ul#mr_social_sharing_widget_networks li select, ul#mr_social_sharing_follow_networks li select {
 	display: inline-block;
 	float: right;
-	width: 160px;	
+	width: 180px;	
 	height: 20px;
 	padding: 0;
+}
+
+span.mr_social_sharing_options, span.mr_social_sharing_custom {
+	display: block;
+	width: 558px;
+	height: 20px;
+	padding: 2px 0;
+}
+
+span.mr_social_sharing_custom {
+	width: 538px;
+	background-color: #EAF2FA;
+	border: 1px solid #DFDFDF;
+	border-radius: 3px;
+	margin: 2px 0;
+	padding: 2px 18px 2px 0;
+}
+
+ul#mr_social_sharing_networks li span.mr_social_sharing_custom input.text {
+	width: 180px;
+	margin: 0;
+}
+
+ul#mr_social_sharing_networks li span.mr_social_sharing_custom label.text {
+	margin: 0 4px 0 8px;
+	padding: 2px 0 0 0;
 }
 
 label.check {

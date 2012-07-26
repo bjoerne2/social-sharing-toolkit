@@ -2,6 +2,8 @@ div.mr_social_sharing_wrapper {height: auto; width: 100%; margin: 4px 0; padding
 div.mr_social_sharing, span.mr_social_sharing, div.mr_social_sharing_top, span.mr_social_sharing_top {display: block; width: auto; height: auto; margin: 2px; padding: 0; vertical-align: bottom;}
 span.mr_social_sharing, span.mr_social_sharing_top {display: inline-block;}
 div.mr_social_sharing_top, span.mr_social_sharing_top {vertical-align: top;}
+div.mr_social_sharing div, span.mr_social_sharing div {vertical-align: bottom !important;}
+div.mr_social_sharing_top div, span.mr_social_sharing_top div {vertical-align: top !important;}
 a.mr_social_sharing_popup_link, a.mr_social_sharing_popup_link:HOVER {display: inline-block; margin: 0; padding: 0; border: 0; vertical-align: bottom;}
 .mr_social_sharing img, .mr_social_sharing_top img {display: inline-block; margin: 0 !important; padding: 0 !important; border: 0 !important; vertical-align: bottom; max-width: 100%;}
 .mr_social_sharing a.mr_social_sharing_popup_link, .mr_social_sharing div, .mr_social_sharing span, .mr_social_sharing iframe, .mr_social_sharing img {line-height: 0; vertical-align: bottom;}
