@@ -36,7 +36,7 @@ class MR_Social_Sharing_Toolkit_Twitter extends MR_Social_Sharing_Toolkit_Button
 				if ($count_url != '') {
 					$retval .= ' data-counturl="'.$count_url.'"';	
 				}
-				$retval .= ' data-text="'.$title.'">Tweet</a>';
+				$retval .= ' data-text="'.$title.'"></a>';
 				$footer = (get_option('mr_social_sharing_js_footer') == 1) ? true : false;
 				$this->enqueue_script('Social_sharing_twitter', 'https://platform.twitter.com/widgets.js', $footer);
 				break;
@@ -48,7 +48,7 @@ class MR_Social_Sharing_Toolkit_Twitter extends MR_Social_Sharing_Toolkit_Button
 				if ($count_url != '') {
 					$retval .= ' data-counturl="'.$count_url.'"';	
 				}
-				$retval .= ' data-text="'.$title.'">Tweet</a>';
+				$retval .= ' data-text="'.$title.'"></a>';
 				$footer = (get_option('mr_social_sharing_js_footer') == 1) ? true : false;
 				$this->enqueue_script('Social_sharing_twitter', 'https://platform.twitter.com/widgets.js', $footer);
 				break;
@@ -60,7 +60,7 @@ class MR_Social_Sharing_Toolkit_Twitter extends MR_Social_Sharing_Toolkit_Button
 				if ($count_url != '') {
 					$retval .= ' data-counturl="'.$count_url.'"';	
 				}
-				$retval .= ' data-text="'.$title.'">Tweet</a>';
+				$retval .= ' data-text="'.$title.'"></a>';
 				$footer = (get_option('mr_social_sharing_js_footer') == 1) ? true : false;
 				$this->enqueue_script('Social_sharing_twitter', 'https://platform.twitter.com/widgets.js', $footer);
 				break;
