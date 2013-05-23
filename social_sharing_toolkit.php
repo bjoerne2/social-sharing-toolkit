@@ -3,7 +3,7 @@
 Plugin Name: Social Sharing Toolkit
 Plugin URI: http://www.active-bits.nl/support/social-sharing-toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 2.1.2
+Version: 2.1.3
 Author: Marijn Rongen
 Author URI: http://www.active-bits.nl
 */
@@ -932,8 +932,8 @@ if ($MR_Social_Sharing_Toolkit->should_share_content()) {
 	add_filter('the_content', array($MR_Social_Sharing_Toolkit, 'share'));
 }
 add_shortcode('social_share', array($MR_Social_Sharing_Toolkit, 'share_shortcode'), 15);
-add_action('wp_enqueue_styles', array($MR_Social_Sharing_Toolkit, 'prepare_styles'), 50);
-add_action('wp_enqueue_scripts', array($MR_Social_Sharing_Toolkit, 'prepare_scripts'), 50);
+add_action('wp_print_styles', array($MR_Social_Sharing_Toolkit, 'prepare_styles'), 50);
+add_action('wp_print_scripts', array($MR_Social_Sharing_Toolkit, 'prepare_scripts'), 50);
 include 'includes/share.widget.php';
 include 'includes/follow.widget.php';
 ?>
