@@ -4,7 +4,7 @@ Plugin Name: Social Sharing Toolkit
 Plugin URI: http://wordpress.org/plugins/social-sharing-toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
 Version: 2.1.4
-Author: LinksAlpha
+Author: linksalpha
 Author URI: http://www.linksalpha.com
 */
 
