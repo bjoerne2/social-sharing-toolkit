@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Social Sharing Toolkit
-Plugin URI: http://www.active-bits.nl/support/social-sharing-toolkit/
+Plugin URI: http://wordpress.org/plugins/social-sharing-toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 2.1.1
-Author: Marijn Rongen
-Author URI: http://www.active-bits.nl
+Version: 2.1.4
+Author: LinksAlpha
+Author URI: http://www.linksalpha.com
 */
 
 class MR_Social_Sharing_Toolkit {
@@ -147,9 +147,26 @@ class MR_Social_Sharing_Toolkit {
 	
 	/* Admin functions */
 	
+	// Simple input sanitizing to prevent script injections:
+	function sanitize_value($val) {
+		$val = str_replace('"', '', html_entity_decode($val, ENT_QUOTES));
+		$val = strtr($val, "&;<>'", ";;;;;");
+		return str_replace(";", "", $val);	
+	}
+	
 	function save_options($new_options) {
 		foreach ($this->options as $key => $val) {
 			if (array_key_exists($key, $new_options)) {
+				if (is_array($new_options[$key])) {
+					foreach ($new_options[$key] as $sub_key => $val) {
+						if (is_array($new_options[$key][$sub_key]) && array_key_exists('id', $new_options[$key][$sub_key])) {
+							$new_options[$key][$sub_key]['id'] = $this->sanitize_value($new_options[$key][$sub_key]['id']);
+						}
+						if (is_array($new_options[$key][$sub_key]) && array_key_exists('text', $new_options[$key][$sub_key])) {
+							$new_options[$key][$sub_key]['text'] = $this->sanitize_value($new_options[$key][$sub_key]['text']);
+						}
+					}
+				}
 				update_option( $key, $new_options[$key] );
 				$this->options[$key] = $new_options[$key] ;
 			} else {
@@ -175,14 +192,13 @@ class MR_Social_Sharing_Toolkit {
 		add_filter('plugin_row_meta', array('MR_Social_Sharing_Toolkit', 'plugin_links'),10,2);
 		wp_enqueue_script('jquery-ui-tabs');
 		wp_enqueue_script('jquery-ui-sortable');
-		wp_enqueue_style('mr_social_sharing-admin', plugins_url('/admin_2.1.1.css', __FILE__));
-		wp_enqueue_script('mr_social_sharing-admin', plugins_url('/admin_2.1.1.js', __FILE__));
+		wp_enqueue_style('mr_social_sharing-admin', plugins_url('/admin_2.1.2.css', __FILE__));
+		wp_enqueue_script('mr_social_sharing-admin', plugins_url('/admin_2.1.2.js', __FILE__));
 	}
 	
 	function plugin_links($links, $file) {
 	    if ($file == plugin_basename(__FILE__)) {
-	        $links[] = '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=P8ZVNC57E58FE&lc=NL&item_name=WordPress%20plugins%20by%20Marijn%20Rongen&item_number=Social%20Sharing%20Toolkit&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted">'.__('Donate','mr_social_sharing_toolkit').'</a>';
-	    	$links[] = '<a href="/wp-admin/options-general.php?page=mr_social_sharing">'.__('Settings').'</a>';
+	        $links[] = '<a href="/wp-admin/options-general.php?page=mr_social_sharing">'.__('Settings').'</a>';
 	    }
 	    return $links;
 	}  
@@ -372,12 +388,14 @@ class MR_Social_Sharing_Toolkit {
 					<div class="mr_social_sharing_networks"> 
 						<h3>'.__('Thank you for using the Social Sharing Toolkit!','mr_social_sharing_toolkit').'</h3>
 						<p>
-							'.__('For questions or requests about this plugin please use the','mr_social_sharing_toolkit').' <a href="http://www.active-bits.nl/support/social-sharing-toolkit/" target="_blank">'.__('official plugin page','mr_social_sharing_toolkit').'</a>. 
-							'.__('If you like the plugin I would appreciate it if you provide a rating of the','mr_social_sharing_toolkit').' <a href="http://wordpress.org/extend/plugins/social-sharing-toolkit/" target="_blank">'.__('plugin on WordPress.org','mr_social_sharing_toolkit').'</a>. '.__('If you really like the plugin you can also','mr_social_sharing_toolkit').' <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=P8ZVNC57E58FE&lc=NL&item_name=WordPress%20plugins%20by%20Marijn%20Rongen&item_number=Social%20Sharing%20Toolkit&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted" target="_blank">'.__('donate here','mr_social_sharing_toolkit').'</a>.
+							Version 2.1.4 is the last version I have personally updated and supported. From now on, further development and support will be provided by LinksAlpha. 
 						</p>
-					</div>
-					<div class="mr_social_sharing_networks banners">
-						'.$this->getBanner().'
+						<p>
+							The last years I have been amazed at how well received this plugin has been. Sadly, I find myself unable to effectively combine further development and, more importantly, support with my other obligations. This is why I agreed to transfer further development and support to LinksAlpha. I fully expect that the current quality of the plugin will be maintained and improved under the care of LinksAlpha.
+						</p>
+						<p style="font-style: italic;">
+							~ Marijn Rongen, Active-Bits - July 2013
+						</p>
 					</div>
 				</form>
 			</div>';
@@ -470,41 +488,10 @@ class MR_Social_Sharing_Toolkit {
 						</select>';	
 	}
 	
-	/* Affiliates */
-	
-	function getBanner() {
-		$banners = array();
-		// ElegantThemes:
-		$banners[] = '<a href="http://www.elegantthemes.com/affiliates/idevaffiliate.php?id=14757" target="_blank"><img border="0" src="http://www.elegantthemes.com/affiliates/banners/468x60.gif" width="468" height="60"></a>';
-		$banners[] = '<a href="http://www.elegantthemes.com/affiliates/idevaffiliate.php?id=14757" target="_blank"><img border="0" src="http://www.elegantthemes.com/affiliates/banners/468x60.gif" width="468" height="60"></a>';
-		$banners[] = '<a href="http://www.elegantthemes.com/affiliates/idevaffiliate.php?id=14757" target="_blank"><img border="0" src="http://www.elegantthemes.com/affiliates/banners/468x60.gif" width="468" height="60"></a>';
-		$banners[] = '<a href="http://www.elegantthemes.com/affiliates/idevaffiliate.php?id=14757" target="_blank"><img border="0" src="http://www.elegantthemes.com/affiliates/banners/468x60.gif" width="468" height="60"></a>';
-		// WooThemes:
-		$banners[] = '<a href="http://woothemes.zferral.com/l/53/33738" title=""><img src="http://woothemes.zferral.com/m/53" alt="" title="" style="border: none"   /></a>';            
-		$banners[] = '<a href="http://woothemes.zferral.com/l/32/33738" title=""><img src="http://woothemes.zferral.com/m/32" alt="" title="" style="border: none"   /></a>';                       
-		// Mojo Themes:
-		$banners[] = '<a href="http://www.mojo-themes.com/categories/wordpress/?r=mrongen" target="_blank"><img src="'.plugins_url('/banners/mojo_1.jpg', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://www.mojo-themes.com/?r=mrongen" target="_blank"><img src="'.plugins_url('/banners/mojo_1.jpg', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://www.mojo-themes.com/categories/wordpress/?r=mrongen" target="_blank"><img src="'.plugins_url('/banners/mojo_2.jpg', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://www.mojo-themes.com/?r=mrongen" target="_blank"><img src="'.plugins_url('/banners/mojo_2.jpg', __FILE__).'" /></a>';
-		// ThemeForest:
-		$banners[] = '<a href="http://themeforest.net/category/wordpress?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/themeforest.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://activeden.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/activeden.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://audiojungle.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/audiojungle.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://videohive.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/videohive.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://graphicriver.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/graphicriver.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://3docean.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/3docean.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://codecanyon.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/codecanyon.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://marketplace.tutsplus.com/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/tutsplus.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://photodune.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/photodune.gif', __FILE__).'" /></a>';	
-		shuffle($banners);
-		return $banners[0];
-	}
-	
 	/* Output functions */
 	
 	function print_opengraph() {
-		echo '<!-- Open Graph tags provided by Social Sharing Toolkit v2.1.1 -->
+		echo '<!-- Open Graph tags provided by Social Sharing Toolkit v2.1.2 -->
 		<meta property="og:locale" content="'.str_replace('-', '_', get_bloginfo('language')).'"/>';
 		if (is_single() || is_page()) {
 			$excerpt = get_the_excerpt();
@@ -563,7 +550,7 @@ class MR_Social_Sharing_Toolkit {
 	}	
 	
 	function prepare_styles() {
-		wp_enqueue_style('mr_social_sharing', plugins_url('/style_2.1.1.css', __FILE__));
+		wp_enqueue_style('mr_social_sharing', plugins_url('/style_2.1.2.css', __FILE__));
 		$upload = wp_upload_dir();
 		if (file_exists($upload['basedir'].'/social_sharing_custom.css') && $this->options['mr_social_sharing_custom_css'] != '') {
 			wp_enqueue_style('mr_social_sharing_custom', $upload['baseurl'].'/social_sharing_custom.css');			
@@ -573,15 +560,15 @@ class MR_Social_Sharing_Toolkit {
 	function prepare_scripts() {
 		if ($this->options['mr_social_sharing_no_follow'] == 1) {
 			if ($this->options['mr_social_sharing_js_footer'] == 1) {
-				wp_enqueue_script('mr_social_sharing', plugins_url('/script_no_follow_2.1.1.js', __FILE__), array('jquery'), false, true);
+				wp_enqueue_script('mr_social_sharing', plugins_url('/script_no_follow_2.1.2.js', __FILE__), array('jquery'), false, true);
 			} else {
-				wp_enqueue_script('mr_social_sharing', plugins_url('/script_no_follow_2.1.1.js', __FILE__), array('jquery'));
+				wp_enqueue_script('mr_social_sharing', plugins_url('/script_no_follow_2.1.2.js', __FILE__), array('jquery'));
 			}
 		} else {
 			if ($this->options['mr_social_sharing_js_footer'] == 1) {
-				wp_enqueue_script('mr_social_sharing', plugins_url('/script_2.1.1.js', __FILE__), array('jquery'), false, true);
+				wp_enqueue_script('mr_social_sharing', plugins_url('/script_2.1.2.js', __FILE__), array('jquery'), false, true);
 			} else {
-				wp_enqueue_script('mr_social_sharing', plugins_url('/script_2.1.1.js', __FILE__), array('jquery'));
+				wp_enqueue_script('mr_social_sharing', plugins_url('/script_2.1.2.js', __FILE__), array('jquery'));
 			}
 		}
 		$this->load_scripts();
@@ -637,7 +624,7 @@ class MR_Social_Sharing_Toolkit {
 		}
 		$bookmarks = '
 				<div class="mr_social_sharing_wrapper">
-				<!-- Social Sharing Toolkit v2.1.1 | http://www.active-bits.nl/support/social-sharing-toolkit/ -->';
+				<!-- Social Sharing Toolkit v2.1.4 -->';
 		foreach ($this->options['mr_social_sharing_'.$type.'button_order'] as $button) {
 			if ($this->options['mr_social_sharing_'.$type.'buttons'][$button]['enable'] == 1) {
 				$id = (array_key_exists('id', $this->options['mr_social_sharing_'.$type.'buttons'][$button])) ? $this->options['mr_social_sharing_'.$type.'buttons'][$button]['id'] : '';
@@ -655,7 +642,7 @@ class MR_Social_Sharing_Toolkit {
 	function create_followers() {
 		$followers = '
 				<div class="mr_social_sharing_wrapper">
-				<!-- Social Sharing Toolkit v2.1.1 | http://www.active-bits.nl/support/social-sharing-toolkit/ -->';
+				<!-- Social Sharing Toolkit v2.1.4 -->';
 		foreach ($this->options['mr_social_sharing_follow_button_order'] as $button) {
 			if ($this->options['mr_social_sharing_follow_buttons'][$button]['enable'] == 1) {
 				$id = (array_key_exists('id', $this->options['mr_social_sharing_follow_buttons'][$button])) ? $this->options['mr_social_sharing_follow_buttons'][$button]['id'] : '';
@@ -811,7 +798,11 @@ class MR_Social_Sharing_Toolkit {
 		}
 	}
 	
-	function share_shortcode() {
+	function share_shortcode($atts) {
+		extract( shortcode_atts( array(
+			'url' => '',
+			'title' => ''
+		), $atts ) );
 		if (is_feed()) {
 			return '';
 		} else {
@@ -842,7 +833,9 @@ class MR_Social_Sharing_Toolkit {
 			$type = get_post_type();
 			$bookmarks = '';		
 			if ((is_single() || $type == 'page') || $this->options['mr_social_sharing_include_excerpts'] == 1) {
-				$bookmarks = $this->create_bookmarks(get_permalink(), the_title('','',false), 'shortcode_', $media, '');
+				$url = ($url == '') ? get_permalink() : $url;
+				$title = ($title == '') ? the_title('','',false) : $title;
+				$bookmarks = $this->create_bookmarks($url, $title, 'shortcode_', $media, '');
 			}
 			return $bookmarks;
 		}
@@ -890,7 +883,7 @@ if (is_array($buttons) && count($buttons) > 0) {
 }
 unset($buttons);
 
-//global $MR_Social_Sharing_Toolkit;
+
 $MR_Social_Sharing_Toolkit = new MR_Social_Sharing_Toolkit();
 add_action('admin_menu', array($MR_Social_Sharing_Toolkit, 'plugin_menu'));
 if ($MR_Social_Sharing_Toolkit->should_print_opengraph()) {	

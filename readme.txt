@@ -1,15 +1,22 @@
 === Social Sharing Toolkit ===
-Contributors: MarijnRongen
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=P8ZVNC57E58FE&lc=NL&item_name=WordPress%20plugins%20by%20Marijn%20Rongen&item_number=Social%20Sharing%20Toolkit&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
-Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Pinterest, Google+, Twitter, Tweet, Buffer, Follow, StumbleUpon, Stumble, Tumblr, Delicious, Digg, Reddit, Myspace, Hyves, YouTube, Flickr, 500px, Picasa, deaviantART, mail, RSS, feed, connect, recommend, social, sharing, widget, shortcode, page, post, button, counter, icon, bitly, Open Graph
+Contributors: LinksAlpha
+Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Pinterest, Google+, Twitter, Tweet, Buffer, Follow, StumbleUpon, Stumble, Tumblr, Delicious, Digg, Reddit, Myspace, Hyves, YouTube, Flickr, 500px, Picasa, deaviantART, App.net, mail, RSS, feed, connect, recommend, social, sharing, widget, shortcode, page, post, button, counter, icon, bitly, Open Graph
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 2.1.1
+Tested up to: 3.5.2
+Stable tag: 2.1.4
 License: GPLv2 or later
 
 Easy sharing and connecting on social networks. Display on posts or use widgets or shortcode. Also Twitter name/hashtag to link converter.
 
 == Description ==
+
+= Change of developer after version 2.1.4 =
+
+Version 2.1.4 is the last version I have personally updated and supported. From now on, further development and support will be provided by LinksAlpha. 
+
+The last years I have been amazed at how well received this plugin has been. Sadly, I find myself unable to effectively combine further development and, more importantly, support with my other obligations. This is why I agreed to transfer further development and support to LinksAlpha. I fully expect that the current quality of the plugin will be maintained and improved under the care of LinksAlpha.
+
+~ Marijn Rongen, Active-Bits - July 2013
 
 = Sharing content =
 
@@ -28,6 +35,7 @@ The plugin currently supports the following networks for sharing your content:
 * Reddit
 * Myspace
 * Hyves
+* App.net
 
 On Tweet and Buffer buttons you can specify a Twitter handle which is then appended to the tweet a visitor sends (like "... via @WordPress"). An email send button is also included.
 
@@ -57,6 +65,8 @@ In version 2.0.4 three dividers were added to each list. These might be useful i
 
 It is also possible to only let the buttons appear where you want by using shortcode. The shortcode function has it's own list of buttons with the same possibilities as the list for content. Use the shortcode [social_share/] in the content where you would like to display the buttons.
 
+Since version 2.1.2: Use one or both of the url and title attributes to override these settings with your own information. Example: [social_share url="http://www.mywebsite.com" title="My Website"/]
+
 = Widget =
 
 The widget has it's own list of buttons with the same possibilities as the list for posts & pages. You can however specify a fixed title and url to use for the buttons in the widget.
@@ -85,6 +95,7 @@ The networks currently supported for the Follow Widget are:
 * Last.fm
 * Spotify
 * Soundcloud
+* App.net
 
 A button for an RSS feed is also included. Of course the type, order and orientation of the buttons is also configurable for the Follow Widget. Each button for the Follow Widget supports the following types:
 
@@ -166,6 +177,18 @@ Upload the Social Sharing Toolkit plugin to the `/wp-content/plugins/` folder on
 
 == Upgrade Notice ==
 
+= 2.1.4 =
+
+Change from webstagram profile to native instagram profile, notification of author change.
+
+= 2.1.3 =
+
+Please update to version 2.1.3 to fix an issue with the loading of stylesheets.
+
+= 2.1.2 =
+
+Please update to version 2.1.2 immediately for several crucial fixes.
+
 = 2.1.1 =
 
 Please update to version 2.1.1 to remove unwanted bookmarks and follow text.
@@ -230,6 +253,18 @@ New widget included in version 1.2.0.
 Please update to version 1.0.1 to prevent an unexpected printing of the page title.
 
 == Changelog ==
+
+= 2.1.3 =
+* Minor fix involving the correct loading of stylesheets
+
+= 2.1.2 =
+* Several minor fixes
+* Added url and title attribute to shortcode function
+* Added button for Youtube Channels
+* Added button for Spotify Albums
+* Added button for Last.fm music (artists)
+* Added buttons for App.net
+* Fixed possible script injection vulnerability
 
 = 2.1.1 =
 * Minor fix removing some unwanted text
