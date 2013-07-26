@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Social Sharing Toolkit
-Plugin URI: http://www.active-bits.nl/support/social-sharing-toolkit/
+Plugin URI: http://wordpress.org/plugins/social-sharing-toolkit/
 Description: This plugin enables sharing of your content via popular social networks and can also convert Twitter names and hashtags to links. Easy & configurable.
-Version: 2.1.3
-Author: Marijn Rongen
-Author URI: http://www.active-bits.nl
+Version: 2.1.4
+Author: LinksAlpha
+Author URI: http://www.linksalpha.com
 */
 
 class MR_Social_Sharing_Toolkit {
@@ -198,8 +198,7 @@ class MR_Social_Sharing_Toolkit {
 	
 	function plugin_links($links, $file) {
 	    if ($file == plugin_basename(__FILE__)) {
-	        $links[] = '<a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=P8ZVNC57E58FE&lc=NL&item_name=WordPress%20plugins%20by%20Marijn%20Rongen&item_number=Social%20Sharing%20Toolkit&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted">'.__('Donate','mr_social_sharing_toolkit').'</a>';
-	    	$links[] = '<a href="/wp-admin/options-general.php?page=mr_social_sharing">'.__('Settings').'</a>';
+	        $links[] = '<a href="/wp-admin/options-general.php?page=mr_social_sharing">'.__('Settings').'</a>';
 	    }
 	    return $links;
 	}  
@@ -389,12 +388,14 @@ class MR_Social_Sharing_Toolkit {
 					<div class="mr_social_sharing_networks"> 
 						<h3>'.__('Thank you for using the Social Sharing Toolkit!','mr_social_sharing_toolkit').'</h3>
 						<p>
-							'.__('For questions or requests about this plugin please use the','mr_social_sharing_toolkit').' <a href="http://www.active-bits.nl/support/social-sharing-toolkit/" target="_blank">'.__('official plugin page','mr_social_sharing_toolkit').'</a>. 
-							'.__('If you like the plugin I would appreciate it if you provide a rating of the','mr_social_sharing_toolkit').' <a href="http://wordpress.org/extend/plugins/social-sharing-toolkit/" target="_blank">'.__('plugin on WordPress.org','mr_social_sharing_toolkit').'</a>. '.__('If you really like the plugin you can also','mr_social_sharing_toolkit').' <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=P8ZVNC57E58FE&lc=NL&item_name=WordPress%20plugins%20by%20Marijn%20Rongen&item_number=Social%20Sharing%20Toolkit&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted" target="_blank">'.__('donate here','mr_social_sharing_toolkit').'</a>.
+							Version 2.1.4 is the last version I have personally updated and supported. From now on, further development and support will be provided by LinksAlpha. 
 						</p>
-					</div>
-					<div class="mr_social_sharing_networks banners">
-						'.$this->getBanner().'
+						<p>
+							The last years I have been amazed at how well received this plugin has been. Sadly, I find myself unable to effectively combine further development and, more importantly, support with my other obligations. This is why I agreed to transfer further development and support to LinksAlpha. I fully expect that the current quality of the plugin will be maintained and improved under the care of LinksAlpha.
+						</p>
+						<p style="font-style: italic;">
+							~ Marijn Rongen, Active-Bits - July 2013
+						</p>
 					</div>
 				</form>
 			</div>';
@@ -485,37 +486,6 @@ class MR_Social_Sharing_Toolkit {
 		if ($this->options['mr_social_sharing_'.$button_type.'align'] == '_top') { echo ' selected="selected"';}
 		echo '>'.__('Align to top','mr_social_sharing_toolkit').'</option>
 						</select>';	
-	}
-	
-	/* Affiliates */
-	
-	function getBanner() {
-		$banners = array();
-		// ElegantThemes:
-		$banners[] = '<a href="http://www.elegantthemes.com/affiliates/idevaffiliate.php?id=14757" target="_blank"><img border="0" src="http://www.elegantthemes.com/affiliates/banners/468x60.gif" width="468" height="60"></a>';
-		$banners[] = '<a href="http://www.elegantthemes.com/affiliates/idevaffiliate.php?id=14757" target="_blank"><img border="0" src="http://www.elegantthemes.com/affiliates/banners/468x60.gif" width="468" height="60"></a>';
-		$banners[] = '<a href="http://www.elegantthemes.com/affiliates/idevaffiliate.php?id=14757" target="_blank"><img border="0" src="http://www.elegantthemes.com/affiliates/banners/468x60.gif" width="468" height="60"></a>';
-		$banners[] = '<a href="http://www.elegantthemes.com/affiliates/idevaffiliate.php?id=14757" target="_blank"><img border="0" src="http://www.elegantthemes.com/affiliates/banners/468x60.gif" width="468" height="60"></a>';
-		// WooThemes:
-		$banners[] = '<a href="http://woothemes.zferral.com/l/53/33738" title=""><img src="http://woothemes.zferral.com/m/53" alt="" title="" style="border: none"   /></a>';            
-		$banners[] = '<a href="http://woothemes.zferral.com/l/32/33738" title=""><img src="http://woothemes.zferral.com/m/32" alt="" title="" style="border: none"   /></a>';                       
-		// Mojo Themes:
-		$banners[] = '<a href="http://www.mojo-themes.com/categories/wordpress/?r=mrongen" target="_blank"><img src="'.plugins_url('/banners/mojo_1.jpg', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://www.mojo-themes.com/?r=mrongen" target="_blank"><img src="'.plugins_url('/banners/mojo_1.jpg', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://www.mojo-themes.com/categories/wordpress/?r=mrongen" target="_blank"><img src="'.plugins_url('/banners/mojo_2.jpg', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://www.mojo-themes.com/?r=mrongen" target="_blank"><img src="'.plugins_url('/banners/mojo_2.jpg', __FILE__).'" /></a>';
-		// ThemeForest:
-		$banners[] = '<a href="http://themeforest.net/category/wordpress?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/themeforest.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://activeden.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/activeden.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://audiojungle.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/audiojungle.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://videohive.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/videohive.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://graphicriver.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/graphicriver.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://3docean.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/3docean.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://codecanyon.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/codecanyon.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://marketplace.tutsplus.com/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/tutsplus.gif', __FILE__).'" /></a>';
-		$banners[] = '<a href="http://photodune.net/?ref=MRongen" target="_blank"><img src="'.plugins_url('/banners/photodune.gif', __FILE__).'" /></a>';	
-		shuffle($banners);
-		return $banners[0];
 	}
 	
 	/* Output functions */
@@ -654,7 +624,7 @@ class MR_Social_Sharing_Toolkit {
 		}
 		$bookmarks = '
 				<div class="mr_social_sharing_wrapper">
-				<!-- Social Sharing Toolkit v2.1.2 | http://www.active-bits.nl/support/social-sharing-toolkit/ -->';
+				<!-- Social Sharing Toolkit v2.1.4 -->';
 		foreach ($this->options['mr_social_sharing_'.$type.'button_order'] as $button) {
 			if ($this->options['mr_social_sharing_'.$type.'buttons'][$button]['enable'] == 1) {
 				$id = (array_key_exists('id', $this->options['mr_social_sharing_'.$type.'buttons'][$button])) ? $this->options['mr_social_sharing_'.$type.'buttons'][$button]['id'] : '';
@@ -672,7 +642,7 @@ class MR_Social_Sharing_Toolkit {
 	function create_followers() {
 		$followers = '
 				<div class="mr_social_sharing_wrapper">
-				<!-- Social Sharing Toolkit v2.1.2 | http://www.active-bits.nl/support/social-sharing-toolkit/ -->';
+				<!-- Social Sharing Toolkit v2.1.4 -->';
 		foreach ($this->options['mr_social_sharing_follow_button_order'] as $button) {
 			if ($this->options['mr_social_sharing_follow_buttons'][$button]['enable'] == 1) {
 				$id = (array_key_exists('id', $this->options['mr_social_sharing_follow_buttons'][$button])) ? $this->options['mr_social_sharing_follow_buttons'][$button]['id'] : '';
@@ -913,7 +883,7 @@ if (is_array($buttons) && count($buttons) > 0) {
 }
 unset($buttons);
 
-//global $MR_Social_Sharing_Toolkit;
+
 $MR_Social_Sharing_Toolkit = new MR_Social_Sharing_Toolkit();
 add_action('admin_menu', array($MR_Social_Sharing_Toolkit, 'plugin_menu'));
 if ($MR_Social_Sharing_Toolkit->should_print_opengraph()) {	

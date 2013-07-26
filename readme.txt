@@ -1,15 +1,22 @@
 === Social Sharing Toolkit ===
-Contributors: MarijnRongen
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=P8ZVNC57E58FE&lc=NL&item_name=WordPress%20plugins%20by%20Marijn%20Rongen&item_number=Social%20Sharing%20Toolkit&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
+Contributors: LinksAlpha
 Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Pinterest, Google+, Twitter, Tweet, Buffer, Follow, StumbleUpon, Stumble, Tumblr, Delicious, Digg, Reddit, Myspace, Hyves, YouTube, Flickr, 500px, Picasa, deaviantART, App.net, mail, RSS, feed, connect, recommend, social, sharing, widget, shortcode, page, post, button, counter, icon, bitly, Open Graph
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable tag: 2.1.3
+Tested up to: 3.5.2
+Stable tag: 2.1.4
 License: GPLv2 or later
 
 Easy sharing and connecting on social networks. Display on posts or use widgets or shortcode. Also Twitter name/hashtag to link converter.
 
 == Description ==
+
+= Change of developer after version 2.1.4 =
+
+Version 2.1.4 is the last version I have personally updated and supported. From now on, further development and support will be provided by LinksAlpha. 
+
+The last years I have been amazed at how well received this plugin has been. Sadly, I find myself unable to effectively combine further development and, more importantly, support with my other obligations. This is why I agreed to transfer further development and support to LinksAlpha. I fully expect that the current quality of the plugin will be maintained and improved under the care of LinksAlpha.
+
+~ Marijn Rongen, Active-Bits - July 2013
 
 = Sharing content =
 
@@ -169,6 +176,10 @@ Upload the Social Sharing Toolkit plugin to the `/wp-content/plugins/` folder on
 3. Advanced settings with bitly, Pinterest and Open Graph options
 
 == Upgrade Notice ==
+
+= 2.1.4 =
+
+Change from webstagram profile to native instagram profile, notification of author change.
 
 = 2.1.3 =
 
