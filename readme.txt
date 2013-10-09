@@ -1,22 +1,14 @@
 === Social Sharing Toolkit ===
 Contributors: linksalpha
-Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Pinterest, Google+, Twitter, Tweet, Buffer, Follow, StumbleUpon, Stumble, Tumblr, Delicious, Digg, Reddit, Myspace, Hyves, YouTube, Flickr, 500px, Picasa, deaviantART, App.net, mail, RSS, feed, connect, recommend, social, sharing, widget, shortcode, page, post, button, counter, icon, bitly, Open Graph
+Tags: Facebook, Like, LinkedIn, Share, Google, Plus, +1, Pinterest, Google+, Twitter, Tweet, Follow, StumbleUpon, Stumble, Tumblr, Delicious, Digg, Reddit, Myspace, Hyves, YouTube, Flickr, 500px, Picasa, deaviantART, App.net, mail, Gmail, AOL, Evernote, Hotmail, Instapaper, Mail.ru, Pocket, Sonico, vkontakte, Weibo, Yahoo Mail, Yammer, RSS, feed, connect, recommend, social, sharing, widget, shortcode, page, post, button, counter, icon, bitly, Open Graph
 Requires at least: 3.0
-Tested up to: 3.5.2
-Stable tag: 2.1.4
+Tested up to: 3.6.1
+Stable tag: 2.2
 License: GPLv2 or later
 
 Easy sharing and connecting on social networks. Display on posts or use widgets or shortcode. Also Twitter name/hashtag to link converter.
 
 == Description ==
-
-= Change of developer after version 2.1.4 =
-
-Version 2.1.4 is the last version I have personally updated and supported. From now on, further development and support will be provided by LinksAlpha. 
-
-The last years I have been amazed at how well received this plugin has been. Sadly, I find myself unable to effectively combine further development and, more importantly, support with my other obligations. This is why I agreed to transfer further development and support to LinksAlpha. I fully expect that the current quality of the plugin will be maintained and improved under the care of LinksAlpha.
-
-~ Marijn Rongen, Active-Bits - July 2013
 
 = Sharing content =
 
@@ -24,7 +16,6 @@ The plugin currently supports the following networks for sharing your content:
 
 * Facebook (like, share and send buttons)
 * Twitter
-* Buffer
 * Google +1
 * Pinterest
 * LinkedIn
@@ -36,8 +27,20 @@ The plugin currently supports the following networks for sharing your content:
 * Myspace
 * Hyves
 * App.net
+* Gmail
+* AOL
+* Evernote
+* Hotmail
+* Instapaper
+* Mail.ru
+* Pocket
+* Sonico
+* vkontakte
+* Weibo
+* Yahoo Mail
+* Yammer.
 
-On Tweet and Buffer buttons you can specify a Twitter handle which is then appended to the tweet a visitor sends (like "... via @WordPress"). An email send button is also included.
+On Tweet button you can specify a Twitter handle which is then appended to the tweet a visitor sends (like "... via @WordPress"). An email send button is also included.
 
 You can decide which networks to support on your blog, where the buttons will appear (either above or below the content). Through drag and drop you can easily change the order in which the buttons appear. 
 
@@ -176,6 +179,11 @@ Upload the Social Sharing Toolkit plugin to the `/wp-content/plugins/` folder on
 3. Advanced settings with bitly, Pinterest and Open Graph options
 
 == Upgrade Notice ==
+
+= 2.2 =
+* Added option to select image size available for sharing if featured image is set.
+* Add new button to enable sharing on more services, including Gmail, AOL, Evernote, Hotmail, Instapaper, Mail.ru, Pocket, Sonico, vkontakte, Weibo, Yahoo Mail, and Yammer.
+* Bug fixes.
 
 = 2.1.4 =
 
