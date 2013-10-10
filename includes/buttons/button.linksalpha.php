@@ -22,7 +22,7 @@ class MR_Social_Sharing_Toolkit_LinksAlpha extends MR_Social_Sharing_Toolkit_But
 		}
 		$retval =  '<a class="linksalpha_button linksalpha_link" href="//www.linksalpha.com/social/mobile" data-url="'.$url.'" data-text="'.$title.'" data-desc="'.$description.'" data-image="'.$media.'" data-button="'.$type.'">
 					<img src="//www.linksalpha.com/images/'.$image.'" alt="Share" class="linksalpha_image" />
-					</a><script type="text/javascript" src="//wwww.linksalpha.com/social/loader_iconbox?link='.urlencode($url).'&id='.rand(5, 15).'"></script>';
+					</a><script type="text/javascript" src="//wwww.linksalpha.com/social/loader_iconbox?link='.urlencode($url).'&id='.rand().'"></script>';
 		return $retval;
 	}
 }
