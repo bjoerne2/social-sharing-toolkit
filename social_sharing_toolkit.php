@@ -470,9 +470,6 @@ class MR_Social_Sharing_Toolkit {
 								<label for="mr_social_sharing_' . $button_type . $button . '"><input type="checkbox" name="mr_social_sharing_' . $button_type . 'buttons[' . $button . '][enable]" id="mr_social_sharing_' . $button_type . $button . '"';
 				if (isset($this -> options['mr_social_sharing_' . $button_type . 'buttons'][$button]['enable']) && $this -> options['mr_social_sharing_' . $button_type . 'buttons'][$button]['enable'] == 1) { echo ' checked="checked"';
 				}
-				if ($button == 'linksalpha') {
-					echo ' checked="checked" disabled="disabled"';
-				}
 				echo ' value="1" />' . $buttons[$button]['title'] . '</label>
 								<img class="right" src="' . plugins_url('/images/move.png', __FILE__) . '" title="' . __('Change button order', 'mr_social_sharing_toolkit') . '" alt="' . __('Change button order', 'mr_social_sharing_toolkit') . '"/>';
 				if (is_array($buttons[$button]['types']) && $buttons[$button]['types'][0] != '') {
@@ -697,7 +694,6 @@ class MR_Social_Sharing_Toolkit {
 		if ($url == '') {
 			$url = 'http://' . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
 		}
-		$count_bookmarks = 0;
 		$bookmarks = '
 				<div class="mr_social_sharing_wrapper">
 				<!-- Social Sharing Toolkit v2.2 -->';
@@ -707,14 +703,7 @@ class MR_Social_Sharing_Toolkit {
 				$text = (array_key_exists('text', $this -> options['mr_social_sharing_' . $type . 'buttons'][$button])) ? stripslashes($this -> options['mr_social_sharing_' . $type . 'buttons'][$button]['text']) : '';
 				$icon = (array_key_exists('icon', $this -> options['mr_social_sharing_' . $type . 'buttons'][$button])) ? $this -> options['mr_social_sharing_' . $type . 'buttons'][$button]['icon'] : '';
 				$bookmarks .= $this -> get_bookmark_button($button, $url, $title, $this -> options['mr_social_sharing_' . $type . 'buttons'][$button]['type'], $this -> options['mr_social_sharing_' . $type . 'display'], $this -> options['mr_social_sharing_' . $type . 'align'], $id, $media, $description, $text, $icon);
-				$count_bookmarks++;
 			}
-		}
-		if ($count_bookmarks) {
-			$button = 'linksalpha';
-			$type = (array_key_exists('icon', $this -> options['mr_social_sharing_' . $type . 'buttons'][$button])) ? $this -> options['mr_social_sharing_' . $type . 'buttons'][$button]['type'] : '';
-			$la_button = $this -> get_bookmark_button($button, $url, $title, $type, $this -> options['mr_social_sharing_display'], '', '', $media, $description);
-			$bookmarks .= $la_button;
 		}
 		$bookmarks .= '</div>';
 		$bookmarks = str_replace('<div class="mr_social_sharing_wrapper"></div>', '', $bookmarks);
